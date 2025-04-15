@@ -1,0 +1,1008 @@
+INFOSYS:
+
+tell me about yourself ----------------->Hello, I’m keshavi, and I am from hyd. I completed my bachelor's degree in 2018 from bvrith. i have 6 years of exp, in intial stages of my career i worked as a sql dba and from past 3 years im working as a devops engineer. my first compnay is tcs and now im working in infosys. With three years of experience as a DevOps engineer, I have developed a strong expertise in various technologies such as Git, GitHub, Azure,jenkins,ansible and Terraform. 
+In my role, I drive collaboration between development and operations teams, ensuring efficiency and effectiveness in our workflows. I specialize in automating processes, managing infrastructure, and successfully deploying applications. I am committed to delivering high-quality results and enhancing operational performance.
+what is docker, why we use them ------------->docker is a open source contanarization tool which creates advanced level of virtualization that is containerization. it is designed to facilitate the application developemt inside software contaniners. we use docker as it is lightweight,less cost,we can resue resources and we can send the images to any other teams so that their application will run efficiently. it has only 1 os which runs contianers, we can easily build and run the containers
+why you used github----------------->github is used to store the data where different teams collaborate with each other and developed diifreent versions of code. we used this because various developers can easily identify the changed code and run them in their local machines and test them.
+how to create dockerfile and components-------------->dockerfile is a file which contains a set of instructions that are used to create the docker image, there are various components of docker file such as from, cmd, label, run, entrypoint, copy, add etc
+how to write playbook for loops-------->playbooks are uually written in yaml file. below is the playbooks for loop 
+- hosts: keshavi
+  become: yes
+  user: kyatham
+  connection: ssh
+  tasks: 
+  - name: "add users"
+    user:
+      name: {{items.username}}
+      state: present
+      groups: sudo
+      append: yes
+      password: "{{items.password}}"
+      with_items:
+        - { username: 'keshavi', password: 'keshavi' }
+        - { username: 'keshavi1', password: 'keshavi1' }
+what was there before docker ---------------> we have vmware before docker. its a virtualization technology where many operating systems runs on single physical machine.in vmware every vm has operating system and resources like cpu,ram,rom are not shared. whereas in docker resources are shared and it is more lightweight.
+anything you have done on your own
+why you have installed tomcat
+what are maven dependencies
+jenkins architecture ----------> we have 3 components. jenkins master/server, jenkins agent nodes/clouds, jenkins webinterface. on master we have all the configurations such as scheduling job,plugins,users and monitoring etc. on jenkins agent nodes(linux,windows) clouds(docker,k8) this tells us on which the pipeline should run. web intrace gives us the visual representation of pipelines.
+2 types of pipelines---------------->declarative & scripted pipeline. declarative stress on what to do rather than how to do. declarative is easy to read.
+have you done any automation using chef cookbooks
+write code for declarative
+types of aws ec2-instance----------->general purpose, compute optimized, memory optimized, storage optimized, accelerating computing, and high-performance computing (HPC) optimized
+servcie now ticketing tools
+daily routine
+have you done only support part
+automation have you done
+jenkins job creation
+issues you faced when deploying ci/cd pipeline
+--------------------------------------------------------------
+what you will do when containers are stopped-------->id check the container logs, and then restart the containers using docker start contnername command to start them,check the resource usage on container using docker stats <cont> command, notify the administrators about stopped container. ill check if there is any major impact due to this
+what is the storage you used in aws---------->s3(simple storage service)
+how to create jenkins job
+what is the storage you have worked on in aws
+what is the port range you have worked in aws
+what is instance have you worked in aws
+---------------------------------------------------------------
+RELIANCE:
+what is issue we faced before ci and we did overcome after ci ---------->Merging code from multiple developers was often complex and time-consuming. This led to integration issues and delays. Manual testing was slow and prone to errors, making it difficult to ensure code quality. Frequent build failures disrupted the development process and delayed releases. Merge conflicts were common when multiple developers worked on the same codebase simultaneously. but after ci, CI encourages small, frequent commits and uses branching strategies to minimize conflicts. CI tools automatically integrate code changes, reducing the complexity and time required for manual merges. Using containerization technologies like Docker, CI ensures consistent across varios environments
+what is cd------------>continous deliver or deployment. it means code is deployed on the production environment. 
+for example lets say that 2 dev are writing code and changing same file in 2 diff branches. how will you resolve this issue. ----->merge conflict
+can we resolve the conflict without taking help of other developer------------->no, we just have to connect with other dev and ask what needs to be changed
+git workflow--------->workspace, staging area and local repo
+maven build lifecycle
+maven goals
+what you meant by human intevention in continous deployment and how does it work
+i have one job and have some files in github. in that i dont want 1 file to get executed when my jenkins jobs run. how will you solve this issue--------->by using .gitignore or using conditional statemnt in jenkinsfile
+if i want to execute one particular command in dockerfile then how will you do that and build it------->RUN command
+how you got into devops role and want is your interest
+what does stryker do
+how to create a job in jenkins
+how to trigger jobs in jenkins------->manualy, using grovvy when building pipe, using cron job
+phases in maven
+do we need internet to download dependencies in maven------->yes, However, there are a few scenarios where you might not need an internet connection:
+Local Repository: If you have already downloaded the required dependencies and they are stored in your local Maven repository, you can build your project without an internet connection.
+You can manually download dependencies and install them into your local repository.   
+Offline Mode: Some Maven tools and plugins allow you to work in offline mode, but this is limited to projects that only rely on dependencies already present in your local repository. This mode is not suitable for most real-world projects, as it restricts access to new dependencies or updates.
+diff between fetch and pull---------->in fetch file is not changed in local repo but in pul file is changed in local repo
+
+---------------------------------------------------------------
+YESDE:
+grep use in linux -----------> The grep command in Linux is a powerful tool used for searching text. grep "search_term" filename. same like filter in windows
+can we use grep for finding processes ------> yes, ps -ef | grep <pid>
+git squash------>combining multiple commit to single commit. git merge --squash
+how to go inside containers-------> docker attach kesh or docker exec -it cont /bin/bash
+why we use /bin/bash in containers---------> to run the containers in interactive mode. which is useful for debugging and running commands interactively within the container. This is especially helpful during development and troubleshooting
+if my container got crashed then how can we get them back----------->First, check the logs to understand why the container crashed: docker logs <container_id>, Try restarting the container: docker start <container_id>, If your container uses volumes to store data, you can recover the data from these volumes even if the container itself is not running:
+docker cp <container_id>:/path/to/data /local/path
+docker networks-------->when we want to link multiple contianer we use this. 
+why we use security groups---->acts as a virtual firewall, controlling the traffic that is allowed to reach and leave the resources that it is associated with.
+why we use autoscaling---->we use this when you want to increase the vm's when the resource utilizatio exceeds the point 
+how to block users in aws
+which jobs you have worked on in jenkins
+are you using maven as backup only?
+what is git rebase--------->when we want to transfer the old branch to completly new branch
+have you worked on disaster recovery modes---------------->master and slave in jenkins
+example i have to create list of users in morning and want to delete them at night. for this what is your approach in ansible---------->it is not ideal method using anisble but we can do it using playbooks. state would be present in morning and absent in eveng
+how to install a service in ansible. what are the methods
+---------------------------------------------------------------------
+CLOUDFRONT:
+how master and slave nodes are connected? how they communicate? -------------TCP/IP protocol
+how to go to new branch----->git checkout kesh
+for example i have 1 frd and we want to work on same project using same repo. how to do that------>create branches
+what does pull do in git
+what are modules
+what module you will use when you want to run the playbook on local machine?----------->To run an Ansible playbook on your local machine, you can use the local_action module or set the hosts directive to localhost with the connection. 
+have you created any ci/cd pipelines
+how to delete docker image------------>docker rmi kesh
+how to get into existing container---------->docker exec -it kesh /bin/bash or docker attach kesh
+what is the diff between autoscaling and load balancer and when we use it------>A load balancer distributes incoming application traffic across multiple EC2 instances in multiple Availability Zones.   
+where is inventory path in ansible?-----------/etc/ansible/hosts
+i have 5 nodes and want to execute some commands. so do i have to write 5 diff playbooks for that?----------No, you don't need to write five different playbooks to execute commands on five nodes. You can define all your nodes in a single inventory file and use one playbook to target them
+have you worked on roles, if yes what are roles and what is the thing you have worked on it
+as ansible is agentless tool how it will communicate with nodes?---------by using ssh. we have to establish ssh-keygen and ssh-copy-id kesh@ip
+how to execute commands in linux?---------by using chmod eg: chmod +x <file.sh>
+what is command for changing owner of file in linux------------>chown <newowner> <file>
+command to use free space in linux---------->free -m, df, du, top, htop
+command to know about cpu usage in linux---------->top, htop, vmstat
+what things you take care when launching ec2-instances
+can we change ansible.cfg path? -------yes..better to change it in current working directory. if not there it checks in users home dir. 
+if not there also it goes to /etc/ansible/ansible.cfg file
+what is vpc?------------virtual private cloud. it enables you to launch aws resources into virtual nkt that you have defined. it allows you to isolate your nkt with other nkts in cloud
+difference btwen private and public subnet?---------private means it is not accesible through internet but only through vpc. public means accessible through internet.
+what is cloud formation?-----------its an aws service it will let you build entire app from strach. same like terraform and arm template. it acts as an IAC tool
+difference between load balancer and auto scaling in aws?----------scaleup and down ec2 instnaces whenevr needed. load balancer distributes incomming data accros multiple ec2 
+or containers 
+what are elastic ip's?-----------means in normal public ips when ever you start or stop the services public ip gets changed(dynamic). but in elastic ip is fixed(static) and
+can be attached to instances.
+what is s3 bucket?-------------object simple storage service which stores data as objects in buckets. object contains file and metadata about the files
+what is ec2 in aws?-------ec2 is an iaas service. it is a virtual machine which is hosted on cloud.we can run any kind of instances
+difference between cloudtrial and cloud watch?---------watch gives you the visibility of performance and healthcheck of resources and applications. 
+while trial is an API cal recording and log monitoring web service 
+-----------------------------------------------------------------------------
+TEKION:
+how to restrict other users in security group------------>edit inbound rules and choose my ip or custom ip.
+have you created any instances in VPC
+do you know how to install and configure jenkins 
+how to run chef cookbook
+command to run only single recipe in node after bootstrap
+diff between copy add and CMD and entrypoint
+what application do you run on docker
+have you used docker swarm
+what is the monitoring tool you have used
+how to check logs in docker--------->docker logs kesh
+what are all the tasks you have done using ansible playbook-->creating handlers, loops, conditions, 
+what commands do you use in linux
+how many ways are there to build jobs in jenkins---------->scripted & declarative
+have you created backup in jenkins
+have you installed any maual plugins in jenkins or used the available ones
+what are all the plugins have you used --> git, thinbackp, backup, publsih over ssh, maven integration, pipeline,extended email notfication
+---------------------------------------------------------------------
+CAPGEIMI:
+in git if my user is not configured then how do you do that-------->git config --global user.name "kesh"
+what is fork in git --------> when we want to copy other persons repo to yours
+how to check list of volumes in docker ----------> docker volume ls
+how to check if there is an eror in jenkins output----------->in console op
+how to check jenkins eror logs----------->check in console op
+where do you want to be in next 5 years-------------------->i want to be in a position where ill be taking important decisions for project requirement. 
+how to encrpyt the playbook in ansible------------------>using ansible vaults
+how to automate passwords in ansible----------------->using ssh-keygen
+what are the branching strategies you use
+if we have any issue in production branch then how do you solve it----------->create a hotfix barnch. develop and test the code and merge the code to prod
+what are the things you do in quality checks in git---------->branch policies
+why do you want to change the job
+why do we use cherry pick in git-------> to want only 1 particular commit in your branch. git cherry-pick <id>
+for eg if my image is crashed then how do you get that back in docker----------> volume
+what is upstream and downstream in jenkins
+where passwords are stored in jenkins------>$JENKINS_HOME/secrets/initialAdminPassword.
+how to stop jenkins job when it is executing
+how do you build a job
+how to upload manual plugins
+how do you check if there is any failure in jenkins job
+how do you restart jenkins
+diff betn ci/cd
+why we need ci
+what is pipeline
+what is replay and rebuild
+types of jenkins file
+ways to create docker image in docker----->from dockerhub, from docker file, from existing containers
+code to write dockerfile
+how to build an image using dockerfile------>docker build -t imagename .
+write a 2 stage declarative pipeline in jenkins and write the codes in it
+how to get the diff ben staging area and local area------->git diff head
+what is git status-------->tell us about working directory us clean or not
+complete statemnets for git to get the clean the clean working directory--------->git add., git commit -m "",git push
+what is diff between git add all and git add .---------->add . will stage the files in current directory, but add all will stage the files in all the directories
+command to commit a message in git
+how to download docker image from docker hub------->docker login, docker pull image,docker image
+what is docker deamon---------->converts images to cont
+what is docker engine
+what is docker host responsible and what is docker deamon responsible----------->deamon is for managing the images, host is where our dcoker is installed
+diff between copy and add
+command to convert code to tar and unzip a file-------->tar -cvf dir.tar dir, gzip dir.tar
+what is prune in docker---------->to remove unused containers or volume
+diff between CMD and entrypoint
+how to expose a port in docker
+how to know docker exited container----------->docker ps -a --filter "status=exited"
+------------------------------------------------------------------------------------
+CLOUDTECHNER:
+things you know about aws
+what are the daily tasks you do
+have you worked on pipelines
+have you created any ci/cd pipelines. if yes explain
+have you written any dockerfile
+best practices you follow when creating docker container--------------->image shuld be lgt weight, install only required dependencies, take it from officail web
+diff between add and copy
+diff between roles and playbook
+how do you protect ansible playbook ------>ansible vaults
+-----------------------------------------------------------------------------------
+EY:
+diff between merge and rebase
+diff between freestyle and declarative pipeline
+code for declarative pipeline
+diff between modules and tasks in ansible
+write a simple playbook in ansible
+what are the types of volumes in docker----->host,named,anonymous
+what is the default volume in docker---->host
+what is 2/2 check in aws---> checks whether the instance is healthy or not
+how you are using ci in your project
+code for finding any file path in linux---------->find /path/to/search -name "filename"
+how do you change some particular spelling in linux----->sed
+what is i in sed 'i/old/new' keshavi in linux----------->case insensitive
+what is idempotency------------->deploying the same things without checking if it there or not
+what are the diff types of indexes in sql
+what are the performance chcks in sql
+diff between ADD and copy in docker
+how to download image from dockerhub and run it
+how to rename container in docker---------->docker rename <old> <new>
+what is prune in docker----------->to remove unused
+why we use handlers----------->when it has to tell the other service to start once it is completed. it will notify the other user to do it task
+can we use diff handlers in same playbook----------->yes
+how to kill docker container--------->docker kill <cont>
+different types of inventories in ansible----------->static is like simple file which we create. dynamic is generated when it is added by some other scripts. both consists of host
+what is cross join
+daily activities
+do you know how to write a pipeline
+branching strategies in your project
+diff between virtualization and docker
+write a dockerfile
+where are our passwords saved in jenkins
+what are used for monitoring and for testing
+what is blue green deployment
+what are the performanace tuning you do in SQL
+what is load balancer in AWS
+do you need any certificate to block anything in aws security groups
+git fetch and merge
+have you faced any issues during ci/cd pipelines
+how to store the images in docker-------->in hub 
+diff between maven and graddle
+can we upload plugins manually
+---------------------------------------------------------------------------
+Tetrasoft:
+what is bare repository in git----------->where it has no wrkng drctry and it is used to store git metadata for version tracking
+what is conflict and git checkout
+how do you revert the changes that is already commited------------------>by using git revert <comitid>
+git fetch and git pull
+what is staging area
+different between docker and kubernetes---------->docker used for building, deploying container. k8 is used for managing the deployed clustered containers, we use both to simplify the app.
+different between scipted pipeline and declarative pipeline
+diff between virtualization and dcoker
+what are docker images---------->like a template which are used to run cont
+docker architecture
+what is docker compose----------->used to run multi container
+docker namespace
+lifecycle of image----------->create, run, start, stop, remove
+how to know docker version------------>docker --version
+how to check the containers in  docker------>docker ps and docker ps-a for non runnig containers
+how to get image from docker hub-------->docker images, docker pull keshavi@gmail.com/ubuntu
+what is dynamic and other inventory in ansible---------->inventory is like the config file for ansibe server
+what are adhoc commads in ansible----->temporary commands used to perform task without using playbook. these are not idempotent. we use this to run linux commands
+different types of modules----------->yum, user, copy, service, win
+diff between aws and azure
+differnce between chef and ansible-------->chef is agent one while ansible is agentless. ansible uses push chef uses pull
+in which language ansible and chef wre written-------->ansbile is python, chef in ruby
+---------------------------------------------------------------
+SREETECH:
+why are you looking for other job, if you already have an offer letter
+what playbooks have you written in ansible
+why we use handler----------->we use this if to notify other ther services to start
+why we use loops in ansible--------------> when we want to execute same thing n number of times then we use loops. for eg if we want to create few users then instead of writing diff playbooks we can mention in 1 playbook about the users and execute it. by this the users will be created
+and what are required when writing loops---------->host,user details,connection, task
+how do you know how much memory is there in linux-------->free-m, top, vtop,vmstat
+what is the default number of file in linux--------->644
+how to login into the ansible server for user----------->make chnages in visudo file. and add the user name like this and save it. kesh ALL=(ALL) NOPASSWS=ALL
+what is diff between chef and ansible-------------->both are configuration management tools
+how did the chef know about the updates
+if there are different recipes and they needs to be run on diff nodes in chef. how do we do it
+what is the umask value of file---->022
+where will we check logs in linux--------->var/log
+which flavours you have worked in linux--------->ubuntu
+what projects have you used in jenkins------------->pipeline projects
+what are the jobs you have created in jenkins
+how to write dockerfile---------------->it consists of set of instructions. 
+---------------------------------------------------------------------
+ACS:
+tell me about your projects and roles and resposnsibles in your project
+what language is used in your project------------------------>.net
+how many pipelines are there in jenkins in your peoject------------->many pipelines according to environment. declarative and scipted pipleine
+why do you use ansible in your project and what is the use even though we can run docker images directly------------------>in our project docker is used to deply the containers and store the image. but ansible is used to install the necessary package, manages the configuration even before the container is deployed. it ensures that the configuration is consistant accros all the environment
+what is difference between chef and ansible----------->both are configuration management tools but ansible uses pull machanism but chef uses push mechanism
+what is command to check syntax of ansible playbook------->ansible-playboon kesh.yml --check
+how to copy files in ansible for different nodes in single playbook--------->ansible kesh -b -m copy "src= ,dest="
+why we use roles in ansible-------------->when we need to use set of task repeatedly. by using roles we can breakdown our playbook into smaller components and resuse them. if we organize the tasks into roles it would be easy to read and maintain them. diff teams can create diff roles without interfering in each others work
+what is ansible galaxy-------->its an gui. it is like a repo which has vast collection of ansible roles and collections. it allows users to share their own roles and collections. we can share and download whatever it is needed.
+what are types of projects you created in jenkins------------------->pipeline projects
+;how do you execute different scripts on different servers by using jenkins freestyle projects
+------------------------------------------------------------------------------------
+INFOSYS PROJECT INTERVIEWS:
+
+there is a logic app and we are changing them from portal. i need to maintain the versions of changes in azure how?--------------->Open your logic app in the Azure portal.In the left-hand menu, under Development Tools, click Versions.
+there is a fucntionapp and azure api. i want to access the fucntionapp using azure api but not from functionapp url how?
+what are access policies?----------->where we define the criteria to grant permisssion for various resources. consists of set of rules and configurations
+what are the things need to deploy fucntionapp------------->subscription, resource grp, app servive plan, function app name config, storage acnt
+do we need storage account to deploy fctn app----->yes
+do you have any idea on bicep
+how can we make a ctcn between 2 resouces like keyvault and storage account or fucntionapp-------->to securely store and retrieve secrets, such as connection strings, API keys, or certificates. in kv give access to msi that is being refred in storage and function app
+if we deploy 5 fcuntionapp do we need 5 keys?-------------------->yes, So, if you deploy 5 Function Apps, each will have its own set of function keys, host keys, and a master key. These keys are unique to each Function App and are not shared between them
+things to know about azure api--------------->Azure API Management is a comprehensive service that helps you manage, secure, and monitor APIs.
+----------------------------------------------------------------------------------------
+ACCENTURE:
+
+how to create a build pipeline if you dont have any yaml code and what are the steps included in build pipeline---------------->Creating a build pipeline without using YAML code can be done through the classic editor in Azure DevOps.
+can we do testing in build piepline------>yes we can
+which is better to deploy web app  is it vm or app service?-------->app service as it is cheap and robust but if you want full control of your application then go for vm
+which is better to deploy web app  is it container or app service?---------->If you want more control over the underlying infrastructure, then Azure Container Apps is a better choice. If you want to focus on developing your application and not worry about the underlying infrastructure, then Azure App Service is a better choice.
+what is the difference between variable grp and pipleine varble------>piplne vars are used for specific pipleins but variable grp are like centralized which will be used accros the project i.e., diff pipelines
+what are the azure policies?----------------> Azure Policy acts like a health inspector during deployment, verifying if the deployed resource meets safety standards (policy rules).
+lets say if developers write the code and wants to raise a pr. it should got through reviwers adn merge it. where do we declare the azure policy?------------------>you can do it in branch policy. go to repos-->branches-->branch policy-->slect required revwers, resolution for comment,status check, link work item whatever that is needed and save the changes
+---------------------------------------------------------------------------------------------------------------
+ZENSAR:
+
+tell me about yourslef
+tell me end to end implementation in your project and what are the complex things you faced
+how you used to deploy the resources. is it directly on prod or non prod?---------->dev, qa and production
+what are testing you used to do before deploying the services.-------------------->Ensures that the entire application flow works as expected from start to finish, Validates that the software functions according to the specified requirements, security code reviews, Identifies vulnerabilities and ensures that the application is secure from threats,  ensure the software is stable, secure, and performs as expected.
+what are the branching startegies you used in your project?------------>we have main and feature branches. we take the code from main barnch and create anew branch. once the testing and everything is done we will merge it to main branch
+how do you integrate git with azure repos ----------------------->install git in local, go to ado and create a new repo and clone the repo in your local. make the changes in your system and add commit and push them to azure repo.
+what do you mean by system integration-------------->System integration is the process of combining different subsystems or components into a single, cohesive system that functions as a unified whole. This involves ensuring that the various components work together seamlessly to achieve the desired functionality and performance.
+have you worked on terraform if yes how did you implement it
+what kind of work have you done in terraform
+what are terraform provisoners------------>Terraform provisioners are components that allow you to execute scripts or commands on local or remote machines as part of the resource creation or destruction process. They enable additional configuration and setup tasks that can't be accomplished with Terraform's declarative syntax alone. Here’s a detailed look at provisioners: Local-Exec Provisioner, remote-exec, File Provisioner
+on which environment did you tested the terraform
+what do you mean by remote state in terraform--------------->In Terraform, remote state refers to storing the state file in a remote location instead of locally on your machine. The state file is a critical component that keeps track of the current state of your infrastructure, allowing Terraform to manage and apply changes accurately
+what are the security implementation you have done in your projects---------------->Implemented role-based access control (RBAC) to ensure users have the minimum necessary permissions, Managed encryption keys securely using services like Azure Key Vault, Configured virtual private networks (VPNs) and network security groups (NSGs) to control inbound and outbound traffic.
+you have mentioned the efficiency is increased by 30% in your resume. can you describe about it--------------------->Implemented automated unit and integration tests using a CI/CD pipeline, Reduced configuration errors and deployment time by automating infrastructure provisioning. wrote the arm template for creating restricting the user by creating the rbac role. previosuly we used to have classic pipeline for release, we created yaml pipeline so that both build and release pipelines can be done at once.
+have you worked on azure monitoring tools?
+how do you recommend the service for the client--------------------> Understand the Client's Needs, Research and evaluate different services that could meet the client's needs.
+Consider factors such as cost, features, scalability, and support, Customize your recommendation to align with the client's specific needs and preferences.
+are you able to work in night shift
+did you do any certifications
+why you are looking for job change?---------------------->I'm always eager to learn and take on new opportunities that allow me to leverage my skills in different ways and contribute to exciting projects.
+do you have any questions
+-----------------------------------------------------------------------------------------------------------------
+BPMLINKS:
+
+tell me about yourself
+in your resume you have mentioned you are working on ansible docker. can you explain what you have done
+what are the specific services you implemented in your project--------------->traffic manager, app service, vm, storage accounts, kv, managed identity.
+what are the projects you worked in tcs
+how did you deploy the services in azure----------------> we use arm templates.
+what is the experience you have in arm template and what services you deployed using them
+for dot net applications what is the azure service you will use-------------------->Azure App Service is a popular choice for hosting .NET applications on Azure. It provides a fully managed platform for building, deploying, and scaling web apps, mobile backends, and APIs.
+how many projects you have worked from start
+roles and responsibilties 
+what are the repeated activities in your project----------------->a) creating azure resources- b) createing rbac and access control. c)triggering the build when we push the chnages d)creating the pr
+have you worked on any paas service--------------------------->Use Case: Deployed web applications and APIs. azure app service.
+Implementation: Created and configured App Service plans, deployed applications using CI/CD pipelines from Azure DevOps, and managed scaling and monitoring through the Azure portal.
+what are the 3 services that are there in azure------------->iaas, paas, saas
+example of each service and have you worked on any things----------->vm for iaas, app service as paas, microsoft 365 as saas
+did you maintain the servcies once it is deployed?
+how much do you rate in powershell, azure and devops
+how does devops helps in the industry
+core prospects or fucntionalities in devops----------->plan,code,build,test.ci,cd,monitoring
+what is the pull request------------>pull request is nothing but combining the code that is there in our branch with the other branch. usualy we create pr when we want to merge our code to main/master in the remote barnch.
+what is service connection--------------->it is used to make a connection between azure services, or external services like docker, github etc with azure pipelines.
+what are the tyoes of pipelines in azure devops and explain them------------>classic and yaml pipeline
+in your projects which pipeline you used--------> we used yaml for build pipeline and classic for release
+if you are using the yaml pipeline then what will be the task type for dot net application----------->UseDotNet@2
+how do you test and deploy the services------------->first of all we will write the code and then push it to remote repository. once our code is there in remote repo we will trigger the pipelines and check if everything is successful or not in the logs
+when you want to add new service in the existing pipeline how do you do it------------>in classic pipeline we can add a new stage or create a new task in the existing stage
+what is the difference between complte mode and incremental mode in arm template----------->complete mode: If your resource group initially contains Resource A, Resource B, and Resource C, and your template specifies only Resource A and Resource B, then Resource C will be deleted after deployment. incremental mode: If your resource group initially contains Resource A, Resource B, and Resource C, and your template specifies Resource A, Resource B, and Resource D, after deployment, the resource group will contain Resource A, Resource B, Resource C, and Resource D
+what are build and release task you are using. give me the task names in yaml file
+which powershell command do you use for deploying arm template---------------->New-AzResourceGroupDeployment -ResourceGroupName "ExampleResourceGroup" -TemplateFile "C:\MyTemplates\azuredeploy.json" -TemplateParameterFile "C:\MyTemplates\azuredeploy.parameters.json"
+using terraform how to deploy the infrastructure
+what is the state file------------------->A state file is a JSON file that stores metadata about the resources managed by your IaC tool. It includes details such as resource IDs, configurations, and dependencies1. It helps the IaC tool understand the current state of your infrastructure, enabling it to determine what changes need to be applied during subsequent deployments
+
+-----------------------------------------------------------------------------------------------------------------
+TECH M:
+tell me about yourslef
+tell me the build and release pieline in your project
+have you worked on dynamic application
+how do you store secrets and certs in keyvault------------------>we already have a service connection where it was created using msi. and this msi we are using in keyvault and add it in accesspolicies and give whatever the permissions that are needed to fetch the secrets&certs. and we use a task(UseAzureKeyVault@1) in pipeline to fetch the secrets using service connection
+where are your artifacts stored----------------->y default, pipeline artifacts are stored in the $(Pipeline.Workspace) directory. Artifacts are stored in Azure Artifacts feeds, which are repositories for your packages
+can we change the storage path when we are generating the artifact. means i want to store my artifact in custom path how to do it---------->You can specify the custom path in your pipeline YAML file using the publish keyword or the PublishPipelineArtifact task.
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)/custom/path'
+    artifact: 'my-artifact'
+how you will approve the task in azure devops and what are the steps
+
+------------------------------------------------------------------------------------------------------------------------
+Globant:
+
+tell me about yourself
+explain the syntax of arm template
+What are the things you have done in your project
+Day to day activities
+What is the difference between China cloud and other clouds in your project
+Which Stack you used in your build pipeline------------->.net
+What is the package management in .net you are using--------> for .net we use NuGet package. for javascript we use npm
+Have you worked on kubernetes
+What is Docker file and how you create it--------------------->dockerfile is a file which contains a set of instructions that are used to create the docker image, there are various components of docker file such as from, cmd, label, run, entrypoint, copy, add etc
+Why we are starting with from in Docker file. Why we are using it------------>The FROM command initializes a new build stage and sets the base image for subsequent instructions in the Dockerfile. It essentially tells Docker which existing image to use as a starting point, which can be any valid image from Docker Hub or a custom image from a local repository
+What are the resources you worked on till now--------------------->kv, storage acount, msi, app service, traffic manager
+Why we are using traffic manager--------------->we use traffic manager to distribute the tarffic accross global regions
+How many types of load balanacers in azure-------------------->5. 
+Different layers in traffic manager In aure--------------->it operats at dns level. dns resolution: it responds to dns query by using ip adress. traffic routing methods: 
+Why we are using 7 layer What is the use of it
+Add a key vault using powershell------------------->New-AzKeyVault -ResourceGroupName "myResourceGroup" -VaultName "myKeyVault" -Location "EastUS"
+syntax of yaml file:
+trigger
+parameter
+resources
+stages
+  stage
+  jobs
+    job
+    steps
+      task
+
+--------------------------------------------------------------------------------------------------------------------------
+LTC:
+
+what is devops and why we use it-----------> DevOps is a set of practice that aim to unify software development (Dev) and IT operations (Ops). It focuses on automating and integrating the processes between software development and IT teams, enabling them to build, test, and release software faster and more reliably
+you have written pull and push configuration in version control. explain about this
+name: CI/CD Pipeline
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  steps:
+  - checkout: self  # Pull the latest code
+  - script: |
+      git config --global user.email "devops@example.com"
+      git config --global user.name "Azure DevOps Pipeline"
+      git pull origin main
+      echo "Auto-update $(date)" >> changelog.txt
+      git add changelog.txt
+      git commit -m "Automated update"
+      git push origin main
+    displayName: 'Update and push changes'
+how did you integrate git to azure
+how do you list the processor in linux ----------->top, vtop, ps -ef|grep name
+how to give sudo permission to user in ansible--------------------->go inside visudo file. name "username ALL=(ALL) NOPASSWD:ALL" | lineinfile path=/etc/sudoers state=present regexp='^username ALL=' validate='visudo -cf %s'
+what is the path of inventory in ansible---------------> /etc/ansible/hosts
+i need a pipeline where it has to run every morning and it should delete by eveng---------------->use cron in yaml file. 0 6 * * *----->runs everyday at 6am
+i have a sql image, run the sql image and create the container and set the use password for it in docker--------------->docker pull imagename(sql), docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=your_strong_password" -p 1433:1433 --name keshavi -d mcr.microsoft.com/mssql/server:latest. here in this -d is detached mode. 
+write a dockerfile which create the subnet and deploy it----------------->we usually create subnet using iac tools. we can also do it thorugh dockerfile but we need python or some code to create steps and run the docker image
+syntax for yaml file-------------->trigger: Specifies which branches will trigger the pipeline.
+pool: Defines the agent pool to use.
+variables: Sets variables for the pipeline.
+stages: Defines stages in the pipeline, each containing jobs and steps.
+stage
+jobs
+job
+steps
+task
+how to establish a connection between 2 nodes in ansible---------------->To establish a connection between two nodes in Ansible, you typically use SSH. create ssh keys, copy ssh keys to nodes, update inventory files. check the connection by pinging
+write a playbook which installs the sql server------------->- name: Install SQL Server
+  hosts: myservers
+  become: yes
+  tasks:
+      - name: Install SQL Server
+        apt:
+          name: mssql-server
+          state: present
+have you worked on front door-------->Azure Front Door is a powerful service designed to enhance the performance, scalability, and security of your web applications. It acts as a global content delivery network (CDN) and load balancer, Distributes traffic across multiple regions to ensure high availability and reliability.
+
+---------------------------------------------------------------------------------------------------------------------
+canada life:
+
+tell us what u know abt canada life
+do you have any idea on github actions---------------------->GitHub Actions is a powerful CI/CD platform integrated directly into GitHub. It allows you to automate your software development workflows, such as building, testing, and deploying code.
+why we need ci and its usage------------------->Early Detection of Issues. as the code is integrated multiple times we can easily detect and resolve issues. it improves code quality as the new code doesnot break the existing functinality. we will also get fatser feedback for the devlopers. it also increase the collaboration between dif teams and reducing the merge conflicts
+compliance you have done on your project---------------------->Role-Based Access Control (RBAC): Assign permissions based on user roles to ensure that only authorized users can access specific data.Use IAM (Identity and Access Management) solutions like Azure AD to manage access controls. Code Reviews: Regular code reviews to ensure adherence to coding standards and best practices.
+you mentioned u increased efficiency in resume explain about it---------------->previously in the project we used to have yml pipeline only for build and for release we used to have classic pipeline. but now we are using yml file which contains both build n deploy stages. and also previously we used to have different files for prod int dev. but now we segregated all the files in a single file and given condition that if the previous env is succesful then it should start the next env. apart from this we are now using terraform for creatign infra and ansible to configure the infra in one go
+tell us the overview of your project--------------->tell them about ci/cd pipleine 
+what have u done in your project and your experince------------->tell the about your daily activities
+any qstns u have for us-------------------->What tools and technologies does the team currently use for CI/CD, monitoring, and infrastructure management?, What is the process you are following for deploying new features and updates?
+what is the package u are using in ur project---------------------->sdk
+what are the stages in your piepline--------------------->we have 2 stages one is build and other 1 is deploy. 
+
+---------------------------------------------------------------------------------------------------------------------------------
+pexip:------------------------->https://copilot.cloud.microsoft/?fromcode=cmc&redirectid=764D89D8058F49508D5EDC37535A7550&auth=2
+
+tell me about yourself
+do you support rollback
+what will be the good day according to you as a devops engineer
+what will be the high level steps if you want to deploy any application---->requirement, plan, code, build, test, release, deploy, operate, monitor
+tell me about your ci/cd pipeline
+how you monitor the microservices frontend
+have you worked on sla's
+if the service is down what will be the steps
+what is terraform
+what is state file in terraform
+for what steps you will send an alert according to you
+any questions for me
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Infosys internal:
+
+what is swap memory------>it is like a virtual memory where the data is store temporaly. like when we want to run a program and at present the ram is full then it will move the least used prgrams to swap so that the new programs will be able to run. when we need the inactive data again them it is swapped from swap memory to ram.
+how do we get the active ports in linux----->netstat -tulpn or ss -tulpn
+t=tcp ports
+u-udp ports
+l= all ports
+n=ip address
+p=proceesid and name of program
+UMASK default value for file= 022
+how to zip file in linux------->tar -cvf <dir>.tar <dir>, gzip <dir>.tar
+master and slave in jenkins
+i have a resource in azure portal now i want to manage that in terraform how?----------->terraform import command
+terraform import <azurerm_virtual_machine>.<kesh> <vmid>.  however this will only update the stat file but not main.tf file. you ahve add the block in main.tf and do terraform apply.
+what is load balancer and round robin method
+is devops an agile methodolgy--------->agile works on dev side while devops works on dev and it operations side. agile focus on efficiency while devops focus on automation. devops is devoped to for better collaboration betn dev and it operations team
+why use 2 ports in container---------->1 is for host port where we want to run our service and other is container port where our service is listening
+write a dockerfile to deploy war file
+FROM tomcat:8.5-jre8-openjdk
+WORKDIR /usr/local/tomcat/webapps/your-application-name
+COPY your-application.war .
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
+how to display particular content of a file in some location in linux---->by using grep, head, tail, sed.  grep "kesh" <path>
+what are azure board and why we use that instead of jira--------->this is a visualization tool where we check the workflow.it helps the team to plan, track and dsicuss the work efficiently. we are using this because it has built-in git repositiries eliminating the need for integration with other tools
+diff betn classic and yaml pipelines---------->classic is gui based where u drag and drop task and changes are not stored in version control. but in yaml piplines we use yaml file where we define stages, jobs, tasks and others. here changes are stored in git and we can reuse them.
+--------------------------------------------------------------------------------------------------------------------------
+CAPGEIMI: L1 interview(2025)
+
+tell me about yourself
+i have 40 commits but i want only 3 specific commits and merge them into master. how to do it?--------> git cherry-pick <commit1> <commit2> <commit3>
+i have 40 commits but now i want to merge them into 3. how can we do it?------------->You can squash your 40 commits into 3 using interactive rebase.  git rebase -i HEAD~40. once we get the window modify the pick to sqaush and then commit it. by this we can do 40 comits to 3
+i have some code but it is not there in the stage to commit. i want to save in working directory so that i can use it later. how to do it?--------->You can use git stash to save your uncommitted changes in the working directory and apply them later when needed. <git stash apply>
+i have some work and added using git add. but now i want to revert this change how can we achieve it?---------->git reset HEAD <file> or git reset .
+what is service connection and how we will configure?---------------> we use this when we want to connect azure resources or external resources with azure pipelines. to create SC we first have to go to project settings in ADO and look for service connection. create new SC and select the arm and after that choose the service principal or MSI and give neccesary tenant id, sub id, service key, name and click on create
+what is approvals and gates in ado?------------>Approvals are manual interventions that require someone (like a manager or developer) to approve or reject a deployment before proceeding. Gates are automated checks that ensure certain conditions are met before moving forward.
+i have a pipeline for image build and push. now i want to trigger the pipeline where if i make any changes in some particular folder then only the pipeline is triggered. give me the codition for this
+trigger:
+  branches:
+    include:
+      - main  # Adjust the branch as needed
+  paths:
+    include:
+      - path/to/your/folder/  # Only trigger when files in this folder change
+i have 3 stages dev, test, prod. but i want to skip the test stage. how to do it-----------> we can use depends on section in prod. so that test will skip and after dev it will directly go to prod
+how to configure self hosted agent in ado----->Go to Azure DevOps → Organization Settings → Agent Pools->add pool. Navigate to Project Settings → Agent Pools → Select your pool (SelfHostedPool).-->new agent(select linunx/win). run commands on system. check if the agent is online or not. we need personal access token
+i have main.tf, and if i do terraform apply, how it will interact with ado and azure----------->Authenticate with Azure (via az login or service principal).
+Read main.tf and apply changes.Store Updated State file in storage account(to keep track of managed resources).
+i want to use 1 rg for multiple subscription. how to give this in main.tf in terraform----------> give diff sub in diff providers section. we cannot use 1 rg for diff sub
+provider "azurerm" {
+  alias           = "sub1"
+  subscription_id = "SUBSCRIPTION_ID_1"
+  features {}
+}
+provider "azurerm" {
+  alias           = "sub2"
+  subscription_id = "SUBSCRIPTION_ID_2"
+  features {}
+}
+someone has manualy updated the vm. but now when i use terraform what will happen-------->use terraform refresh command
+what is terraform refresh command---------->Syncs Terraform state with real infrastructure from portal
+i want to create vm. but vnet and subnet are already present. now i want to use them and create vm using terraform. how to do it---------->Since your VNet and Subnet already exist, you don't need to create them in Terraform. Instead, you can fetch their details using data command data.azurerm_virtual_network and data.azurerm_subnet
+To create a VM in Azure using Terraform, you need the following:
+✅ Resource Group – The container for all resources.
+✅ Virtual Network & Subnet – To enable network communication.
+✅ Public IP (Optional) – To access the VM externally.
+✅ Network Security Group (NSG) – To control traffic.
+✅ Network Interface Card (NIC) – Connects the VM to the network.
+✅ VM Configuration – OS type, size, admin credentials.
+what is datablocks in terraform------------>we use this when we want to know the details of existing resources. we use resource blk to create a new resource
+what is tfstate file and how u are storing in your current project. is it locally or remote------------>In Azure DevOps, Terraform state is typically stored remotely using Azure Storage. tf state consists of metadata. it tells us what are the resources are desired and actual resources
+what is docker volume-------->used for storing databases, logs, or application data. we use it as a backup. when we make any changes in 1 volume it will reflect in other volumes as well if we share it
+what is the difference between cmd and run in docker and in which stages these command will execute------->run is used in build time, cmd is used at container run time. cmd can be overwritten, run canot be overwrite
+suppose we have cmd arguement and entrypoint argument. which will execut first in docker----------->ENTRYPOINT executes first, and CMD acts as arguments to ENTRYPOINT
+can we override entrypoint or not------------>Yes, you can override ENTRYPOINT in Docker, but it requires the --entrypoint flag when running the container. docker run --entrypoint cat myimage /etc/os-release
+i have vm in prod. now i want to increase size without downtime. is this posssible---------->Yes, increasing the size of a virtual machine (VM) in Azure can be done without downtime, but there are some important steps and considerations to keep in mind. one of the process is below:
+If you use a Virtual Machine Scale Set (VMSS):
+Add new VMs with the desired size.
+Gradually switch traffic to the new VMs.
+Remove old VMs after migration.
+can we trigger another pipeline from 1 pipeline---------------> yes, we can do that Using pipeline Task.
+jobs:
+- job: Trigger_Pipeline_B
+  steps:
+  - task: AzurePipelines@1
+    inputs:
+      definition: 'Pipeline_B_Name'
+      project: 'YourProject'
+      waitForCompletion: true 
+---------------------------------------------------------------------------------------------------------------------------
+KANERIKA:
+
+tell me about yourself
+can you tell me the pipeline you have configured
+brief me about the steps in ci/cd pipeline in your project
+tell me how will you integrate git with azure. how the pipeline os triggered
+do you have any experience in ansible
+how will you store the secrets in ansible------------->Ansible Vault is a tool built into Ansible for encrypting sensitive data such as passwords or keys.ansible-vault create secrets.yml
+what is dynamic inventory in ansible--------->A Dynamic Inventory in Ansible allows you to automatically pull information about the hosts from external sources, such as cloud providers, databases, or APIs, rather than manually defining all the hosts in an inventory.ini file. This is particularly useful in environments where hosts change frequently, such as cloud-based infrastructures (AWS, Azure, Google Cloud), where new instances may be created or terminated on-demand.
+do you have exp in k8
+can you tell me in docker commands. cmd and entrypoint which is overwritten------------>both can be overwrtitten. ENTRYPOINT is not overwritten unless explicitly replaced by using the --entrypoint flag when running the container. CMD can be overwritten when you pass new arguments at runtime.
+give the docker command to overwrite the entrypoint----------------->docker run --entrypoint cat myimage /etc/os-release
+can you tell me how you interact with the container. tell me the command to go inside the container----------------->docker exec -it is generally the preferred method to enter a container because it opens an interactive shell session without affecting the main process.
+docker attach is useful if you need to see output from the container’s primary process or interact with it directly (but not for opening a shell).
+where .tf state file is stored in azure? which module we can say it is stored----------->The Terraform state file is stored in Azure Storage using the azurerm backend.
+did you write the terraform code from strach 
+do you have any questions
+------------------------------------------------------------------------------------------------------------------------------
+
+PROARCH:
+
+tell me about yourslef
+which ci/cd tool you have worked on-------->azure devops
+did u get any chance to work on github actions
+where are you storing your code in your project--------->azure repos. they are asking about version control code 
+how do u establish a connection between git and azure devops----------->tell them how u integrate git with ado
+branching strategies u are following in your project--------->main,feature,develop. we develop code in develop and do test there. once it is succesful raise pr to feature and do testing in qa and once done then raise pr to main
+how you are merging feature to develop
+were there any checks during the pr merge----------->tell them about branching policy(need aprovers, work items, resolving the comments) REPO-->branches-->...-->branch policy.
+services you worked on azure------------>kv, msi, storage, vm, 
+apart from azure have you worked on any other cloud
+i want to fetch the secrets in ado. how do you fetch the secrets from kv to ado---------->give kv secret user or officer permission on user and the use azurekeyvault@2 task in yaml pipeline.
+is it possible to restrict other users using storage account. i want only 1 person to access the storage account how to do it----------->go to access policy(IAM) in storage and remove all the access other than the person who need it. check the role assignment
+is it possible to whitelist the ip and give access to that ip--------->if you want to restrict access based on IP, go to:
+Storage Account → Networking → Firewalls and Virtual Networks
+Whitelist only the allowed IP (e.g., 192.168.1.10)
+Block all other traffic
+please tell me the difference between arm template and terraform---------->terraform multi cloud. arm, only on azure
+tell me one main diff between arm and terraform------------>arm doesnt contain state file while terraform does
+does arm template maintain statefile?--------->No, ARM templates do not maintain a state file. 
+if arm template doesnt maintain any statefile then how does it know whether it has created the resources or not------------->Azure Resource Manager (ARM) directly interacts with the Azure platform to determine the current state of resources at the time of deployment. There's no concept of a state file like in Terraform because Azure already knows the current state of resources through its internal systems.
+what is the least privilage we can give to someone to read the secrets-------->Key Vault Secrets User
+if i give u contributor access on sub. will you be able to assign role permission?-------->no. they can only manage resources
+can we create a role with contributor access--------->❌ Default Contributor Role → CANNOT assign roles  ✅ Custom Contributor Role (With Extra Permissions i.e., role assignement permission) → CAN assign roles
+3 major things when we create or assign a role. tell me about them---------->resource name, type of access, user id
+in ado can we store artifacts. can we see the artifact in ado--------->steps:
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: "my-artifact"
+in ado do u see any environments. if yes did u come accros any situation in your project------------>Environments in ADO are used for:
+Managing deployments across different stages (e.g., Dev, QA, Staging, Production).
+Applying approvals and security checks before moving to production.
+Tracking deployments and logs for auditing purposes.
+Go to Azure DevOps Portal-->Navigate to Pipelines → Environments.
+Configured approval gates in ADO Environments.
+Dev → Auto Deploy
+QA → Requires Approval
+Prod → Requires Manual Approval + Security Check
+you are creating resources through arm template. is it directly performing or through ci/cd pipeline
+is there any condition you are using in ci/cd pipeline--------->condition: succeeded(), depends on, condition: or(failed(), canceled())
+imagine a situation where we created storage account in portal. now i want to get that in terraform is that possible?----------->terraform import <resourcetype>.<name>
+have you used workspace in terraform------------>Yes! I have worked with workspaces in Terraform, and they are quite useful for managing multiple environments like dev, staging, and prod with the same Terraform configuration but with diff state file.
+what commands you have worked on terraform
+why did you use both terraform and arm template
+there is an extension in arm template in azure---------->bicep
+did u ever get the chance to work on bicep. why did microsft develop bicep even though they have arm template----------->Microsoft developed Bicep as a simplified syntax for Azure Resource Manager (ARM) templates. ARM templates have been the primary way to deploy resources in Azure, but they can be verbose and difficult to manage, especially for complex deployments. Bicep addresses these challenges while still being fully compatible with ARM. it is easy to read the syntax.
+--------------------------------------------------------------------------------------------------------------------------------------
+CAPGEMINI L2:
+
+tell me about yourself
+what are the services u worked on azure
+have u worked on app service
+tell me what u know about functional app------->serverless computing service which runs smal piece of code according to event
+Function App Triggers (How Functions Get Invoked)
+Trigger                     Type	              Description	Example Use Case
+HTTP                        Trigger	            Triggered via HTTP request	API endpoints, webhooks
+Blob Storage Trigger	      Triggered           when a file is uploaded to Azure Storage	File processing
+Queue Storage Trigger	      Triggered           when a message is added to a queue	Asynchronous processing
+Event Grid Trigger	        Triggered           by Azure events (e.g., resource updates)	Event-driven automation
+Timer                       Trigger	            Runs on a schedule (CRON)	Scheduled jobs, clean-up tasks
+give me the yaml file to deploy webapps---------->give task as azurewebapp@1 and give subid, app name, artifact path.
+how many stages are there in yaml pipeline which u have written for webapp
+i want to deploy the webapp in diff env. how to do it--------->create diff stages for diff env after build stage
+dotnet restore or dontnet test is there in your yaml. are u not using it
+without dotnetrestore is it going to work. is it going to deploy webapp------>Yes, the pipeline will still deploy the web app even without dotnet restore and dotnet test, but it is not recommended for production. if we dont use test then bugs and code validation is not done.
+what are doing with you arm template. how you are deploying it
+i have webapp and storage blob storage. now i want to access the webapp using blob. how to do it--------->give storage blob contributor in webapp IAM
+what are event driven things in functional app. how u used to trigger
+Trigger                     Type	              Description	Example Use Case
+HTTP                        Trigger	            Triggered via HTTP request	API endpoints, webhooks
+Blob Storage Trigger	      Triggered           when a file is uploaded to Azure Storage	File processing
+Queue Storage Trigger	      Triggered           when a message is added to a queue	Asynchronous processing
+Event Grid Trigger	        Triggered           by Azure events (e.g., resource updates)	Event-driven automation
+Timer                       Trigger	            Runs on a schedule (CRON)	Scheduled jobs, clean-up tasks
+what was the fucntional app doing which u deployed--------->
+Every night at midnight, a function cleans up old database records in Azure SQL. 🔹 Trigger Used: TimerTrigger
+A mobile app calls an Azure Function to get weather data from an external API and cache results in Redis.🔹 Trigger Used: HTTPTrigger
+When a file is uploaded to Azure Blob Storage, a function processes the file (resizes an image, extracts text, etc.).🔹 Trigger Used: BlobTrigger
+types of event driven triggers in functional app
+do u have any questions for me
+
+----------------------------------------------------------------------------------------------------------------------------------------
+NAGARRO:
+i have a terraform file and im commiting my changes. if other developer also want to deploy the same how can this be possible------->Terraform stores its state in a file (terraform.tfstate). To ensure multiple developers can safely deploy, use a remote backend like, Azure Blob Storage, or Terraform Cloud. This prevents state conflicts and allows for collaboration. 
+i dont want other developers to deploy when im deploying in terraform. how to do it----------->the most common and recommended approach is using Azure Storage Account with Blob Lease Locks. by this if one person is deploying then other person will get lock mechanism error
+how to use older version code in the pipeline from the github. like there are 5 commit histories, but i want to use 3rd committed code.--------->The git step clones the repository. The git checkout <commitid> command checks out the 3rd commit.
+what is multi staging in docker---------->Multi-stage builds in Docker are a way to optimize your Dockerfile by using multiple FROM statements to create temporary intermediate images. This approach helps reduce the final image size by separating the build environment from the runtime environment.
+do u have exp in hasicorp vault?--------->HashiCorp Vault is a tool designed for securely accessing secrets, such as API keys, passwords, certificates, and more
+tell me about yourself
+in kubernetes which tools have u used?
+what do u know about k8?-------->master, pods, clusters, nodes. used for microservices management., helm chat for app deployment in k8 clusters
+diff between entrypoint nd cmd in docker
+what are vulneribilities scanning in ur pipeline------->we use microsoft defender for cloud to do all the security checks. iac scanning for validating iac against security policy. secret scanning to check the secrets are being exposed. dependency scanning i.e., synk. Identifies vulnerabilities in dependencies and suggests fixes
+have you done monitoring---------->Azure Monitor. Centralized monitoring solution for collecting, analyzing, and acting on telemetry from your cloud and on-prem environments.used for Monitoring resource performance (CPU, memory, etc.)
+Azure Application Insights: A feature of Azure Monitor designed specifically for monitoring live applications, especially useful for developers. used for Monitoring the health and performance of web apps and API
+Azure Log Analytics: Collects and queries logs from various sources (Azure resources, VMs, on-prem servers) for deep diagnostics. used for Centralized log management and querying.
+explain about your pipeline
+do u use .dotnet package---->yes
+any scanning in middle of your pipeline if yes then how?----------->iac scanning for validating iac against security policy. secret scanning to check the secrets are being exposed. dependency scanning i.e., synk. Identifies vulnerabilities in dependencies and suggests fixes
+code quality checks in pipeline---------->iac scanning for validating iac against security policy. secret scanning to check the secrets are being exposed. dependency scanning i.e., synk. Identifies vulnerabilities in dependencies and suggests fixes
+how u handle secrets
+where do u store state file and why?--------->azure storage account
+i created manualy resource. can i again do it in terraform?----------->terraform import
+i want 3vms at a time. how can we do that in terraform--------->count
+how to do code reusability-------------->modules
+you have an app which is in vm. what steps are there to expose it on abc.com. what type of config you do
+what is load balancer--------->
+Load Balancer type				    Layer		Use Case
+-------------------------------------------------------------------------------
+Azure Load Balancer				    L4			Distributing traffic to VMs (public/private)
+Azure Application Gateway		  L7			Web applications with advanced routing
+Azure Front Door				      L7			Global load balancing and site acceleration
+Azure Traffic Manager			    DNS			Traffic distribution across global regions
+-----------------------------------------------------------------------------------------------------------------------------------------
+DELLOITE:
+
+tell me about yourslef
+what u know about k8
+azure monitoring services--------->azure monitor, log analytics, application insights
+experience on jenkins, powershell
+explain syntax if arm template-------->schema, parameters, variables, resouces, output
+you worked on free or enterprise of terraform----->yes worked on enterprise edition which provides remote state file
+where did u store state file-------->azure storage account
+have you worked on modules---------->modules are smallest part of code which provides reusability of code
+if i want to execute terraform script, it should first do these steps. how to do it. any way to tell them to execute first----------->use depends_on 
+have experience in security group-------------->A Security Group in Azure is a virtual firewall used to control inbound and outbound traffic to resources within a Virtual Network (VNet). It allows or denies traffic based on rules you define. Security groups are commonly used to control access to virtual machines (VMs), network interfaces, and other resources that are part of a VNet.
+diff load balanacers in azure
+how long you will learn k8
+i dont want to login with my cred in azure. how to do it------------->use service principal or MSI
+security features when doing pipeline--------->branch policies, health check, scanning of resources
+where we get service principal(app id)-------------->In the Azure Portal, navigate to Azure Active Directory or microsoft entra id--->On the left-hand menu, click App registrations and app id.
+how log insights work---------->Log Insights in Azure is powered by Azure Monitor Logs and Log Analytics. It collects, stores, and analyzes logs from different Azure resources, applications, and on-premises environments. Logs are stored in an Azure Log Analytics Workspace.
+The logs can be categorized into:
+Activity Logs (Azure resource actions)
+Diagnostic Logs (VM performance, database errors, etc.)
+Custom Logs (from apps & scripts)
+diff between log analytics and application insights------------->
+✔ Use Log Analytics if you want to monitor infrastructure, security logs, VM performance, network activity.
+✔ Use Application Insights if you need deep application monitoring, request tracing, and user behavior insights.
+have you worked on ADF 
+what kind of things you done on powershell
+do you have exp in multi environment in pipeline
+any exp in sonarquebe
+------------------------------------------------------------------------------------------------------------------
+MOTIVITYLABS:
+
+tell me about yourself
+how good are you with linux operating systems
+my app is not working and got an alert at 5 am how you will troubleshoot this issue---------->What was the alert message? (e.g., high latency, service unavailable, memory leak), Is this a recurring issue or the first time?ook at logs in Application Insights, Azure Monitor, or directly on the server/container.
+Search for errors, exceptions, or unusual activity around 5 AM. Check if any deployments or updates happened before the issue. Is the app reachable?High CPU, Memory, or Disk usage at 5 AM?Check for network issues affecting outbound or inbound traffic.any storage, db or pipeline issue. Try running a test request to simulate the error. If deployment caused it, roll back to a previous stable version.
+my new version code is not there in webapp. how do you troubleshoot it---------------->check if the pipeline deployment is succesful or not. check if the github is using the latest version or not. clear and restart the webapp. verify build and runtime error. check the logs
+why git is known as distributed version control system-------->because it has both local and remote repo. even if 1 repo doesnt work we can take the code from other repo
+what is staging area in git------------>where we add the code before comit. its like saving the code in local repo
+how do you identify the folder is there under version control system---------->check the .git folder or do git status. if we doesnt get any error then it is under version control
+why we use git rebase command---------->when we want to rewrite the commit history we use rebase. by this 1 branch is completely changed to other branch along with commit history
+when we use git pull, merge and fetch----------->pull to get the changed code. fetch to check the changed code. merge to merge our code to other code
+which is best among all three -----------> depends upon the task
+diff between availablity set and Zones
+Feature	                Availability Set	                                                                  Availability Zone
+Definition	            Logical grouping of VMs across fault & update domains within a single data center.	Physically separate data centers within the same Azure region.                 Scope	Works within a single data center (same region).	                           Spans multiple data centers within a region.
+Update Domain (UD)	    Ensures VMs don’t get updated simultaneously.	                                      Updates are done per zone, reducing downtime.
+VM Placement	          VMs are placed across multiple racks in one data center.	                          VMs are placed in different physical locations (zones).
+Example Services	      VMs, SQL databases with availability groups.	                                      VM Scale Sets, Azure Kubernetes Service (AKS).
+components in availability set and zone
+pre requisite to host webapp----------->host service(vm/app service), subscription, rg, storage, code, vnet,nsg, application gateway or front door, pipeline, monitoring and security
+why we use RBAC---------->used in Azure to manage user permissions securely and efficiently. It ensures that users have only the permissions they need—nothing more.
+in vm if we want to use kv then what permissions we have to give---------->use msi in vm, and go to kv and use this msi and give permission
+why we use service principal-------------->A Service Principal (SP) is used in Azure to allow applications, scripts, or automation tools to authenticate and access Azure resources securely without using user credentials
+have you setup any point to point VPNs
+why we use NSG------------>An Azure Network Security Group (NSG) is used to control inbound and outbound traffic to Azure resources (like Virtual Machines, Subnets, or Load Balancers). It acts as a firewall that allows or denies traffic based on rules.
+i want to use 1vnet to communicate with other vnet. how to do it----------->1️⃣ VNet Peering (Best for low latency, high-speed communication)
+2️⃣ VNet-to-VNet VPN (IPsec Tunnel) (Best for cross-region or different subscriptions)
+what are the things we use in arm template to deploy the resources
+what are the components in arm template
+i kept username and password in kv. now i want to use that to connect to db------------>assign kv permission to resources and retrieve credentials
+things should be there in terraform file
+diff between import and data---------->1️⃣ import — Bringing External Resources into State 2️⃣ data — Fetching Information About Existing Resources
+diff between Version and Version control---------->vesrion refers to what version you are using in terraform. version control referes to where you are storing the terraform code(git,butbucket)
+where you are storing state file
+how can we delete resources from state file---------->f you want to remove a resource from Terraform state (without deleting the actual resource in the cloud), you can use terraform state rm
+have you setup any ci/cd pipeline. what is build n release pipeline------------->🔹 Build Pipeline → Compiles code, runs tests, and packages artifacts.
+🔹 Release Pipeline → Deploys built artifacts to environments (Dev, QA, Prod).
+by default ansible has log file-------->no
+in order to create log file in ansible what things you will do------->Modify your ansible.cfg file to enable logging permanently.
+[defaults]
+log_path = /var/log/ansible.log
+how to setup own config file in ansible----------->Create a file named ansible.cfg in your working directory and give inventory, log path, hsot evrything there
+export ANSIBLE_CONFIG=/path/to/custom/ansible.cfg----------->run this command to force use custom config File
+
+-------------------------------------------------------------------------------------------------------------------
+CAPGEMINI:
+
+how do you manage secrets?
+how do you integrate terraform with azure pipeline
+how do you store state file in terraform
+how do you deploy resources and what are the resources you have deployed using terraform
+explain 1 resource you deployed using terraform
+do you have any idea about idempotency and why we use it------------>✅ Prevents unnecessary changes → Avoids modifying configurations that are already correct.
+while preparing iac as code what are the configurations and security things you will considerations--------->version control, storing of state file, reusability of code, secret storing, giving access to authorized users, enable logging and monitoring, use pipelines
+/terraform
+   ├── main.tf         # Root module
+   ├── variables.tf    # Input variables
+   ├── outputs.tf      # Output variables
+   ├── modules/
+   │   ├── networking/
+   │   │   ├── vnet.tf
+   │   │   ├── security_groups.tf
+   │   │   ├── outputs.tf
+   │   ├── compute/
+   │   │   ├── vm.tf
+   │   │   ├── variables.tf
+
+in terms of budget what you will consider. what are budget policy-------->size, storage, unused resources, set alerts if recahes limit
+Category	                Best Practices
+Resource Sizing	          Use right-sized VMs, auto-scaling, reserved instances
+Storage Optimization  	  Use Cool/Archive storage tiers, lifecycle policies
+Budget Limits	            Set cost alerts for 80%, 90%, 100% budget consumption
+Governance	              Use Azure Policy/AWS SCP to restrict expensive resources
+Quota Management	        Enforce limits on CPU, memory, and VM counts
+security things for iac configuration. do you have any idea within terraform for security thing------------->✔ Use Azure Key Vault / AWS Secrets Manager instead of hardcoding secrets.
+✔ Use Terraform’s sensitive = true attribute to mask sensitive outputs.
+✔ Restrict Terraform user permissions (avoid exposing credentials).
+challenged faced with terraform and resolved it------------>mismatch of infra with respect to cloud and terraform, secret storing, missing values of variables, resource already Exists
+how to restore the deleted state file-------------->if storing remotely take the state file from deleted blobs or previos version in storage account. or check if it manualy taken backup then restore it from there. if we dont have any of these then do terraform import <resourcetype>.<name>.<resourceid>. after this do plan and apply.
+
+---------------------------------------------------------------------------------------------------------------------------
+SONATA:
+
+for eg when there is a resource in terraform but i dont want to use this as it is damaged when i do apply. how to do it----------->we can use terraform taint for the resources. terraform taint type.name. when we use this and terraform apply the tainted resource is deleted and a new one is created.
+tell me about the ci/cd pipelines which you have deployed
+what are the build tools which you are currently using------->dotner CLI
+how do you take care of parallel build in pipeline--------------------->give multiple jobs in yaml file. they will run paralelly
+for an automatic trigger what u will do for pipeline------------------->cron, branches, manual trigger, changes in folder
+Continuous Integration (CI) Trigger: Runs the pipeline whenever code changes are pushed to the repository.
+Pull Request (PR) Trigger: Runs the pipeline when a pull request is created or updated.
+Scheduled Trigger: Runs the pipeline at a specific time or interval.
+Resource Trigger: Starts the pipeline based on changes in specified resources (e.g., builds, repositories).
+Webhook Trigger: Executes the pipeline in response to external events, such as updates in a GitHub repository
+hows your current branching strategy-------------->master: for production-ready code
+develop: where features are merged and tested before release
+feature/*: for individual development tasks
+what is local and global variable in pipeline------------->Local variables are defined within a specific scope, such as a job or a step.Global variables are defined at the pipeline level and can be accessed by any job or step within the pipeline.
+i have 2 diff branches and 1 has to trigger to dev env and 1 has to trigger qa env--------------->give branch details in trigger scope and give different jobs for dev and qa. use condition statement so it will trigger for specific branch: condition: eq(variables['Build.SourceBranchName'], 'dev-branch')
+what is diff between rebase and merge------------>Rebase moves or re-applies commits from one branch onto another base commit. This process rewrites the commit history, creating new commits with new SHA-1 hashes. while merge creates a commit which has code of 2 developers
+do we have history id in rebase------------->In Git, when you perform a rebase, the commit history is rewritten. This means that the original commit IDs (SHA-1 hashes) are changed because the commits are applied on top of a new base commit. However, Git does not maintain a history ID specifically for rebases.
+diff between continous delivery and deployment. how you are using in your project give me an example----------->if we use manual approver stage in yaml then it is delivery. but if we dont use that then it is deploymment
+how do you connect to ado using login
+how do you debud any pipeline---------->go to pipeline and check logs. check the resources utilization. if we have minitoring tools check them for logs
+how to create a image out of container--------------->docker commit container_id new_image_name
+diff between docker add and copy
+how do you redeploy the docker image if it is corrupted
+Stop Running Containers:  docker ps -q --filter "ancestor=my_app:latest" | xargs docker stop
+Remove the Corrupted Image:  docker rmi my_app:latest
+Pull the Image Again:  docker pull my_app:latest
+Recreate and Start Containers:  docker-compose up -d
+services you worked on azure and where we use nsg---------------->Virtual Machines (VMs):
+Inbound Traffic: Control access to VMs by allowing or denying traffic from specific IP addresses or ranges.
+Outbound Traffic: Restrict VMs from accessing certain external resources.
+what is state file and lifecycle of it------------>Initialization:
+When you first run terraform init, Terraform initializes the working directory and sets up the backend configuration for the state file.
+Creation: During the first terraform apply, Terraform creates the state file and records the initial state of the resources.
+Updates: Every time you run terraform apply after making changes to your configuration, Terraform updates the state file to reflect the new state of the resources.
+Storage: The state file is stored either locally or remotely, depending on your backend configuration.
+Locking: To prevent concurrent modifications, Terraform can lock the state file during operations. This is especially important in collaborative environments.
+Backup: Terraform often creates backup copies of the state file before making changes. This helps in recovering the state in case of errors.
+Migration: You can migrate the state file from one backend to another using terraform state commands. This is useful when changing storage solutions or moving to a more secure backend.
+write a terraform file for auto scaling instance and vpn
+powershell script to upload file that has .csv extension------------># Create the context for the storage account
+$context = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+# Upload the file to the blob container
+Set-AzStorageBlobContent -File $filePath -Container $containerName -Blob $blobName -Context $context
+how to check cpu usage for linux----------->top,htop,vmstat
+list all vms in stopped state in 1 rg-------------->az vm list --resource-group <ResourceGroupName> --query "[?powerState=='VM stopped'].{Name:name}" --output table
+for 1 resource i want to give reader permission. how to do it using powershell-------------->New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName $roleDefinitionName -Scope $resourceId
+diff access control mechanisms in azure----------->msi,aad,rbac,iam
+if i want to add new environment to a varibale how to do it using powershell for app service--------------------->Set-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName -AppSettings $appSettings.Properties
+give me the example how you solved performance issue using azure monitor
+how terraform is integrated with ado
+
+-------------------------------------------------------------------------------------------------
+HEXAWARE:
+
+tell me about your self
+things that are there in terraform file
+i want to deploy 10 reosurces at a time. how to do it in terraform----------->use count fucntion
+i want to deploy 10 resources with diff configuration how to do it in terraform----------->use foreach()
+why we use output file in terraform-------->we use output files (or just outputs) to expose useful information about the infrastructure we've provisioned.
+what is diff between variable and tfvar file--------->variable define the inputs, their types, defaults, and descriptions while tfvar file actually give values to the variables you declared earlier
+how do you secure state file--------->store it in remote account. give limited acces to remote state file using rbac and iam control
+when there is a conflict in terraform how do you handle it---------->use blob lease lock
+there is a manual edition in cloud. how do you handle it------->use terraform refresh and plan and apply it
+when we do terraform refresh where the file will be chnaged is it state file? if it is state file then how the main.tf is changed------->use terraform refresh and plan and apply it
+give me the structure of ci/cd pipeline
+what jobs are executed in build
+what are agent pools-------------->An agent pool is a collection of agents used in Azure DevOps and Azure Container Registry to run tasks and pipelines.
+where you will deploy your code------------>webapp
+how you provision vms. how do you deploy your code in webapp--------------->we can deploy your application as a ZIP package to Azure App Service. This method involves creating a ZIP file of your project and uploading it to the service.
+what are all the things that are required for docker
+architecture of k8
+how you store secrets
+diff between service principal and msi------------->service principal is mainly used to authentaticate the appplications. msi is used to access resources from other resource
+do you have experience in building db pipeline
+any certifcations in azure
+what are the applications you have build and deploy'----------->web applications
+issues faced with pipeline--------------->Build Failures:
+Code Errors: Syntax errors, missing dependencies, or failed tests can cause builds to fail.
+Slow Pipelines:
+Resource Bottlenecks: Limited CPU, memory, or I/O resources can slow down the pipeline.
+Deployment Failures:
+Configuration Issues: Incorrect configuration settings or missing environment variables can cause deployments to fail.
+Security Vulnerabilities:
+Exposed Secrets: Hardcoded credentials or improperly managed secrets can lead to security breaches.
+Integration Issues:
+Service Dependencies: Changes in one service affecting the functionality of another.
+default directories in azure devops----------->System.DefaultWorkingDirectory: This is the local path on the agent where your source code files are downloaded. It's essentially the root of your repository.
+Build.ArtifactStagingDirectory: This directory is used to store build artifacts before they are published. It's a temporary location for files that will be shared between build and release stages.
+Build.SourcesDirectory: This directory contains the source code that is checked out by the pipeline. It's typically a subdirectory within the System.DefaultWorkingDirectory2.
+Build.BinariesDirectory: This directory is used to store compiled binaries and other intermediate files generated during the build process2.
+Agent.TempDirectory: A temporary directory used by the agent for various tasks during the pipeline execution2.
+what is git cherrypick
+diff between merge and rebase
+how to create new branch
+deployemnt startegies you follow in your project 
+if you deployed wrong version. how do you go back to previous version-------------->use git revert and push the chnages again
+how do you do code analysis in your project--------->microsoft defender
+
+-----------------------------------------------------------------------------------------------------
+FNF:
+
+tell me about yourself
+have you ever created infra part completely using terraform---------> 
+how do you use terraform in azure pipeline------------>we give working directory path in yaml. thats how it will get to know the tf files and execute them. we neeed rg, storage,container,key, service connection, working directory in task
+where does statefile reside in azure------------->storage account
+how do you lock the terraform state file-------> if we use terraform backend in files then it will automatically use blob lease lock. nothing extra needed
+where we do use that in locking mechanism in azure--------------->Navigate to your storage account in the Azure Portal.
+Go to the Containers section and select the container that contains your blob.
+Locate the specific blob and check its properties. If a lease is active, you will see lease information such as the lease state and lease duration.
+within terraform how do you handle secret----------------->Store sensitive information in environment variables and reference them in your Terraform configuration. Mark input variables as sensitive to prevent them from being displayed in logs or output.
+variable "db_password" {
+  type      = string
+  sensitive = true
+}
+Use secret management tools like HashiCorp Vault, AWS Secrets Manager, or Azure Key Vault to store and retrieve secrets securely.
+how do you retrive the serect in azure
+tell me the structure of terraform in your project
+have you used count and for each in terraform------------>count for identical resource creation. for each() for various configuration of resources
+probelms you faced during terraform deployment---------->State File Conflicts, Resource Already Exists, ncorrect or missing variable values can lead to interpolation errors.The Terraform state file is out of sync with the actual infrastructure
+what is create before destroy in terraform----------->create_before_destroy
+Purpose: By default, when Terraform needs to replace a resource, it first destroys the existing resource and then creates a new one. This can cause downtime. The create_before_destroy argument changes this behavior by creating the new resource first and then destroying the old one.
+Usage: You can use the create_before_destroy argument within the lifecycle block of a resource definition.
+resource "aws_instance" "example" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+Benefits:Minimizes Downtime: Ensures that the new resource is ready before the old one is destroyed, reducing service interruptions1.
+Smooth Transitions: Useful for resources that need to maintain availability during updates or replacements.
+why we use datablock in terraform------------->In Terraform, the data block is used to retrieve information about existing resources that are not managed by Terraform but are needed for your configuration
+how do you import all the infra from cloud to terraform----------->we cannot import all resources at a time. we can only do 1 resource at a time
+where did you use kv
+what is msi and kv------------>msi for access of 1 resource to other. kv to store secrets and certs
+types of networking in docker and how it works
+how to reduce image size--------->Multi-stage builds allow you to use multiple FROM statements in your Dockerfile. Combine RUN Commands. Create a .dockerignore file to exclude unnecessary files and directories from the Docker build context. Install only the essential packages and libraries required for your application to run.
+i have base image as 2.5 how to reduce it in docker----------->Use docker history <image_name> to examine the layers of your image. This will show you the size of each layer and the commands that created them. and followe above steps
+why we use cmd and ENTRYPOINT. are there any dependencies on each other----------->they are not dependant on each other. If ENTRYPOINT is not defined, CMD specifies the executable to run.
+diff types of msi. what is the difference between them-------------->system-Assigned Managed Identity
+Description: This type of identity is tied directly to an Azure resource, such as a virtual machine or an App Service.
+Lifecycle: The identity is created when the resource is created and is automatically deleted when the resource is deleted.
+User-Assigned Managed Identity
+Description: This type of identity is created as a standalone Azure resource and can be assigned to one or more Azure resources.
+Lifecycle: The identity is managed independently of the resources that use it, allowing for more flexible and reusable identity management1
+where you are deploying your app---------------->webapp
+types of service bus and how will be sending messages----------->Azure Service Bus is used for reliable messaging between distributed applications
+anything on fucntion app
+architecture of k8
+
+-------------------------------------------------------------------------------------------------------
+HAPPIESTMINDS:
+
+what is taint in terraform------->n Terraform, a taint is a way to manually mark a resource for destruction and recreation during the next apply. It’s useful when a resource is in a bad state or needs to be recreated without changing the configuration
+what are the types of metrics in azure monitoring-------------->CPU Usage (for VMs), Disk I/O (for VMs), Network Traffic (for VMs or load balancers), Request Count (for storage accounts),Response Time (from Application Insights), Failure Rate (from Application Insights), Server Response Time (from Azure App Services), Resource Utilization (e.g., VM memory, CPU), User Sign-ups per Hour
+what are facts in azure artifacts
+what is ingress in k8-------------->Ingress is a Kubernetes object that manages external access to services in a cluster, typically HTTP and HTTPS traffic.
+It acts as an entry point into your cluster — think of it like a reverse proxy or router that maps incoming requests to the appropriate backend services.
+what is meamory leak------------->A memory leak is when a program allocates memory but fails to release it after it's no longer needed — causing memory usage to grow over time and eventually slow down or crash the system. eg when the object is not in use but still being refered then memory will take lot of time thus degrading the performance
+why we use fork------------>when we want other persons repo to our repo then we use fork
+why we use git stash------------->We use git stash to temporarily save your uncommitted changes (both staged and unstaged) without committing them — so you can switch branches or pull updates without losing your work
+how to optimize image in docker-------->use multi stage build, combine multiple run and cmd commands, install only the reuired dependencies, use .dockerignore file to remove unnecessary files. install the image from official website
+why we use docker compose---------->We use Docker Compose to define and manage multi-container Docker applications using a simple YAML file. It’s your best friend when an app needs more than one service — like a web server, database, cache, etc.
+what are the issues that you have faced while deploying pipelines
+how do you define variables in powershell-------->$keyvault="keshavi". new-azkeyvault -Name $keyvault
+what are self hosted and microsoft hosted agents in azure-------->microsoft agents are the agents that are maintained by azure. used for simple azure pipelines, we need to wait long time inorder to run our pipeline using this. less control. whereas self hosted agent has full control as it is prepared by us. used for complex pipelines. we dont have to wait for the pipelines to be run
+-----------------------------------------------------------------------------------------------------------------

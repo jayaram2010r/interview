@@ -35,6 +35,10 @@ Kubernetes Interview Questions (3+ Years Experience)
 17. How do you manage dynamic secrets in Kubernetes for applications?
 
 18. How would you perform a rolling update of a ConfigMap without downtime?
+Deployment controller's rolling update strategy and ensure your application is designed to handle ConfigMap updates gracefully. 
+The key is to configure the Deployment to incrementally update Pods with the new ConfigMap, minimizing downtime and ensuring continuous service.
+Modify the ConfigMap using kubectl edit configmap <configmap-name> or kubectl apply -f <configmap.yaml>
+kubectl rollout restart deployment <deployment-name>--->Deployment controller to update Pods incrementally. 
 
 19. What is kubectl kustomize and how does it compare with Helm?
 

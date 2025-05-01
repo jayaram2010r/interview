@@ -30,6 +30,53 @@ Kubernetes Interview Questions (3+ Years Experience)
 
 15. How do you handle network segmentation in a multi-tenant Kubernetes cluster?
 
+
+1. k get pod -A
+2. cd /etc/kubernetes/manifests: ls -lrt 
+3. controlplane:/etc/kubernetes/manifests$ cat etcd.yaml | grep file
+4. controlplane:/etc/kubernetes/manifests$ ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.k
+ey snapshot save /opt/etcd-backup.db
+
+
+k create deployment nginx-deployment --image nginx:1.16 --replicas 2
+k get deployments.apps
+k set image -help
+k get deployments.apps -o yaml
+kubectl set image deployments/nginx-deployment nginx=nginx:1.17 --record
+
+
+k run static-pod --image busybox --dry-run=client -o yaml --command -- sleep 2000
+ssh node01
+node01: cd /etc/kubernetes/manifests$ nano static.yaml --copy the content from 1st command
+node01:/etc/kubernetes/manifests$ logout
+k get pods -A
+k get pods -o wide
+
+https://www.youtube.com/watch?v=o_7jlMBHFFA
+
+k create namespace dev
+k get pod --all-namespaces
+k run nginx-pod --image=nginx:alpine
+k get pods
+k describe pod nginx-pod
+k run --help
+kubectl run hazelcast --image=redis:alpine --labels ties=jayaram
+k describe pod hazelcast
+k create namespace dev
+k get ns
+k expose pod  hazelcast --port 6379 --name messaging-service
+k describe svc messaging-service
+k create deployment hr-web --image=nginx --replicas 2
+k run static-pod --image=nginx1 --dry-run=client -o yaml --command -- sleep 1000 > static-box.yaml
+k create namespace finance
+k run temp-bus --image=redis:alpine -n finance
+k describe pod temp-bus -n finance
+k get nodes -o jsonpath='{.items[*].status.nodeInfo.osImage}'
+vi pv.yaml
+k create -f pv.yaml
+k get pv
+
 16. What is the difference between ephemeral volumes and persistent volumes?
 
 17. How do you manage dynamic secrets in Kubernetes for applications?

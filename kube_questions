@@ -30,6 +30,39 @@ Kubernetes Interview Questions (3+ Years Experience)
 
 15. How do you handle network segmentation in a multi-tenant Kubernetes cluster?
 
+16. What is the difference between ephemeral volumes and persistent volumes?
+
+17. How do you manage dynamic secrets in Kubernetes for applications?
+
+18. How would you perform a rolling update of a ConfigMap without downtime?
+Deployment controller's rolling update strategy and ensure your application is designed to handle ConfigMap updates gracefully. 
+The key is to configure the Deployment to incrementally update Pods with the new ConfigMap, minimizing downtime and ensuring continuous service.
+Modify the ConfigMap using kubectl edit configmap <configmap-name> or kubectl apply -f <configmap.yaml>
+kubectl rollout restart deployment <deployment-name>--->Deployment controller to update Pods incrementally. 
+
+19. What is kubectl kustomize and how does it compare with Helm?
+
+20. How would you detect and recover from node pressure scenarios automatically?
+
+21. How do PodDisruptionBudgets interact with cluster upgrades?
+
+22. What’s the process for creating custom controllers or operators in Kubernetes?
+
+23. How would you migrate workloads between clusters?
+
+24. How do you detect pod-level DNS issues?
+
+25. How does container resource throttling work in Kubernetes?
+
+26. How can you prevent a misconfigured Helm chart from affecting production?
+
+27. What are the best practices for running stateful workloads in Kubernetes?
+
+28. How do you handle Kubernetes version upgrades in a production cluster?
+
+29. How would you build a multi-region highly available Kubernetes setup?
+
+30. How can you validate the integrity of container images before deployment?
 
 1. k get pod -A
 2. cd /etc/kubernetes/manifests: ls -lrt 
@@ -76,37 +109,5 @@ k get nodes -o jsonpath='{.items[*].status.nodeInfo.osImage}'
 vi pv.yaml
 k create -f pv.yaml
 k get pv
-
-16. What is the difference between ephemeral volumes and persistent volumes?
-
-17. How do you manage dynamic secrets in Kubernetes for applications?
-
-18. How would you perform a rolling update of a ConfigMap without downtime?
-Deployment controller's rolling update strategy and ensure your application is designed to handle ConfigMap updates gracefully. 
-The key is to configure the Deployment to incrementally update Pods with the new ConfigMap, minimizing downtime and ensuring continuous service.
-Modify the ConfigMap using kubectl edit configmap <configmap-name> or kubectl apply -f <configmap.yaml>
-kubectl rollout restart deployment <deployment-name>--->Deployment controller to update Pods incrementally. 
-
-19. What is kubectl kustomize and how does it compare with Helm?
-
-20. How would you detect and recover from node pressure scenarios automatically?
-
-21. How do PodDisruptionBudgets interact with cluster upgrades?
-
-22. What’s the process for creating custom controllers or operators in Kubernetes?
-
-23. How would you migrate workloads between clusters?
-
-24. How do you detect pod-level DNS issues?
-
-25. How does container resource throttling work in Kubernetes?
-
-26. How can you prevent a misconfigured Helm chart from affecting production?
-
-27. What are the best practices for running stateful workloads in Kubernetes?
-
-28. How do you handle Kubernetes version upgrades in a production cluster?
-
-29. How would you build a multi-region highly available Kubernetes setup?
-
-30. How can you validate the integrity of container images before deployment?
+k create namespace dev
+k create deployment nginx-deployment --image nginx:1.16 --dry-run=client -o yaml --replicas 3 -n dev

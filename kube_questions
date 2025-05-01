@@ -11,6 +11,7 @@ Kubernetes Interview Questions (3+ Years Experience)
 5. How does Kubernetes handle node scaling with Cluster Autoscaler?
 
 6. What is the difference between kubectl apply and kubectl create?
+kubectl apply use to take advantage of version control, where if you are experimenting or troubleshooting, kubectl create is a good option.
 
 7. How would you approach securing secrets in a GitOps workflow?
 

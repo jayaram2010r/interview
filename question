@@ -1,0 +1,19 @@
+1. What is a parameter group in Amazon RDS, and what is its purpose?
+2. How do I write a CloudFormation template to deploy both an EC2 instance and an Application Load Balancer (ALB)?
+3. What are ECS (Elastic Container Service) and ECR (Elastic Container Registry) in the context of containerization?
+4. How do I create Docker images and push them to Amazon ECR?
+5. In a multi-account setup using AWS CloudFormation, how can I create a single IAM role across all accounts?
+6. If I have a 450MB Docker image, what are the best practices to optimize and reduce its size?
+7. What is the difference between Docker and Kubernetes in container orchestration?
+8. What is a pod in Kubernetes, and how does it function?
+9. What is the difference between a container and a pod in Kubernetes?
+10. How is load balancing achieved within pods in Kubernetes?
+11. How can I fetch all EC2 instances across all AWS accounts and regions?
+12. How can I fetch all EC2 instances from all accounts within a specific AWS Organizational Unit (OU)?
+13. If two VPCs in different AWS accounts have the same CIDR block, can VPC peering be established between them, and what are the alternatives?
+14. We usually see a 2/2 status check on EC2 instances; what does it mean if we now see a 3/3 status check?
+15. If an EC2 instance is hosted in the management account and we create an AMI backup, how can we share that AMI with child accounts?
+16. After sharing an AMI with child accounts and launching the instance, it is launching and terminating automatically. What could be the reason for this behavior?
+17. How can we identify if the AMI we shared has an issue that might be causing the instance to launch and terminate automatically?
+18. What are the steps involved in configuring a 3-tier architecture in AWS?
+19. If we are trying to download or save an RDS backup to an S3 bucket but RDS is not connecting to S3, how can we troubleshoot this issue?

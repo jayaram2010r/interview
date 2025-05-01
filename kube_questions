@@ -65,6 +65,12 @@ kubectl rollout restart deployment <deployment-name>--->Deployment controller to
 
 30. How can you validate the integrity of container images before deployment?
 
+31. If I have a 450MB Docker image, what are the best practices to optimize and reduce its size?
+focus on using minimal base images, multi-stage builds, optimizing layers, and cleaning up unused files. 
+Specifically, leverage Alpine Linux or similar minimal distributions for base images, use multi-stage builds to separate build and runtime environments, and combine multiple commands into single RUN instructions. 
+Additionally, employ .dockerignore files to exclude unnecessary files and use RUN commands to clean up after package installations. 
+
+
 1. k get pod -A
 2. cd /etc/kubernetes/manifests: ls -lrt 
 3. controlplane:/etc/kubernetes/manifests$ cat etcd.yaml | grep file

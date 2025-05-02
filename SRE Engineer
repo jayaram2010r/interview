@@ -1,0 +1,40 @@
+Persistent Systems
+
+how to calculate last 5 minutes https request in prometheus query
+rate(http_requests_total[5m])
+
+how do configure datasource in grafana
+To configure a data source in Grafana,navigate to Connections in the left-side menu, 
+click Add new connection, 
+and then select the desired data source. 
+Next, fill in the required parameters, including the data source URL, authentication details, and ,Scrape Interval. 
+Finally, click Save & Test to establish the connection. 
+
+diffrent type of aggregation funtion in logql
+sum, avg, min, max, stddev, and stdvar, which calculate totals, averages, minimums, maximums, and standard deviations, respectively, over a specified time range. 
+count and rate are used to count log entries or calculate entries per second. 
+
+sum and count difference in promql
+sum- Adds up the values 
+count-Counts the number 
+
+api gateway and it's funtion
+ API gateway is a centralized entry point for managing interactions between client applications and backend services.
+API gateways commonly include properties like authentication, authorization, and rate limiting
+
+what metrics u moniotr the sre role
+In Site Reliability Engineering (SRE), key metrics related to system performance and reliability include the "Four Golden Signals" (latency, traffic, errors, and saturation), along with other metrics like availability, throughput, and Mean Time To Repair (MTTR). These metrics help SREs monitor system health, identify potential issues, and ensure systems are reliable, scalable, and meet user expectations.
+
+what is tracing in observability
+tracing involves recording and visualizing the path of a request as it travels through a distributed system. It provides a detailed view of how different services interact and how long each step takes, helping to pinpoint performance bottlenecks and diagnose issues. Tracing is one of the three pillars of observability, alongside logs and metrics. 
+
+CPU usage all the pods in namespaces
+kubectl top pods -n namespace
+
+To install Prometheus on a Kubernetes cluster
+Add the Helm repository: Add the Prometheus community Helm repository and update it: helm repo add prometheus-community https://prometheus-community.github.io/helm-charts and then helm repo update. 
+Create a namespace: Create a namespace for Prometheus to isolate its resources: kubectl create namespace prometheus. 
+Install Prometheus: Use Helm to install the kube-prometheus-stack chart into the namespace
+
+ProQL: Monitoring system metrics and alerting
+LogQL: Log exploration and troubleshooting

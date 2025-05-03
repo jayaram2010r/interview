@@ -1,0 +1,34 @@
+
+1. AWS Config + EventBridge:
+ • I set up Config rules to detect non-compliant resources — like untagged EC2, open ports, idle machines.
+
+2. Lambda Auto-Actions:
+ • Whenever Config detected issues, EventBridge triggered a Lambda function.
+ • This function either auto-tagged, auto-stopped idle instances, or sent immediate alerts.
+
+3. Scheduled Cost Anomaly Detection:
+ • Every night, a Lambda function pulled daily AWS Cost Explorer data.
+ • If any service or account exceeded 10% threshold compared to the weekly average, it triggered Slack + Email alerts.
+
+4. Visibility First, Action Next:
+ • All alerts first came to Slack channels where DevOps and owners could approve actions (like terminating unused resources).
+
+5. Terraform IaC:
+ • Entire solution — Config, EventBridge, Lambda, IAM, SNS — all written in Terraform to ensure version control and easy replication.
+
+⸻
+
+The Impact:
+ • 20% monthly AWS cost reduction within the first 2 months.
+ • Real-time visibility for DevOps and CloudOps teams.
+ • Zero human dependency for basic compliance enforcement.
+ • First-time ever — proactive action before bills got out of hand!
+
+⸻
+
+Key Learning:
+
+“Real success in DevOps isn’t just about automation — it’s about understanding business pain points and solving them smartly.”
+
+I learned that cost optimization is NOT a “one-time” audit.
+It needs real-time event-driven systems — combining AWS Config, EventBridge, Lambda, Cost Explorer, and Slack.

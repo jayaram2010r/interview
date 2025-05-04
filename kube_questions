@@ -123,3 +123,4 @@ k create namespace dev
 k create deployment nginx-deployment --image nginx:1.16 --dry-run=client -o yaml --replicas 3 -n dev
 k explain replicaset
 k delete rs <replicaset-name>
+k edit rs <replicaset-name>

@@ -124,3 +124,20 @@ k create deployment nginx-deployment --image nginx:1.16 --dry-run=client -o yaml
 k explain replicaset
 k delete rs <replicaset-name>
 k edit rs <replicaset-name>
+k delete pod <pod-name>
+k get pods
+k get rs
+k get deployments
+k create deployment --help
+kubectl run redis --image=redis:alpine
+k expose pod redis --port 6379 --name redis-service
+k get svc redis-service
+k describe svc redis-service
+k create deployment webapp --image=nginx --replicas=3
+k get deploy
+k create ns dev
+k create deployment redis-deploy --image=nginx --replicas=3 -n dev
+k get deployments -n dev
+k run httpd --image=httpd:alpine --port=80 --expose=true --->ClusterIP service same name as httpd
+k get svc
+k describe svc httpd

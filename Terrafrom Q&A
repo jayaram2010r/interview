@@ -1,0 +1,29 @@
+
+1. What is Terraform and how does it differ from other IaC tools like CloudFormation or ARM templates?
+
+
+2. What are Terraform providers and how do they work?
+
+
+3. Explain the difference between terraform plan and terraform apply.
+
+
+4. What is the purpose of the terraform state file?
+
+
+5. How do you manage secrets in Terraform?
+
+
+6. What are modules in Terraform and how do you use them?
+
+
+7. How does remote state work and why is it important?
+
+
+8. What are workspaces in Terraform?
+
+
+9. How do you handle Terraform code in a CI/CD pipeline?
+
+
+10. What’s the difference between count and for_each?

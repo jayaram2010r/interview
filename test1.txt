@@ -84,3 +84,26 @@ EXPOSE (Dockerfile): declares the container listens on a port (docs only)
 bash
 CopyEdit
 docker run -d -p 80:80 --name nginx nginx
+
+
+🔸 What are your roles and responsibilities?
+ 🔸 How do you configure SSH access in Kubernetes and tell me the steps?
+    If SSH is not already installed, install the OpenSSH server and client on the worker node. 
+    Start the OpenSSH service: systemctl start sshd. 
+    Check the status of the SSH service: systemctl status sshd. 
+ 🔸 How do you add users in Linux?
+ 🔸 What is CI/CD?
+ 🔸 What is SRE?
+ 🔸 How do you monitor using Prometheus and Grafana?
+ 🔸 What is a critical issue you handled recently?
+ 🔸 What is branching in Git?
+ 🔸 How did you troubleshoot a recent production issue?
+ 🔸 What is the difference between Monolithic and Microservices?
+ 🔸 Do you know YAML scripting?
+ 🔸 What did you do using YAML?
+    YAML is a human-readable data serialization language commonly used for configuration files, data storage, and data transmission. 
+    It's particularly popular in DevOps for tasks like defining CI/CD pipelines and managing Kubernetes resources
+ 🔸 How do you troubleshoot if pods are not working?
+ 🔸 Do you know MySQL?
+ 🔸 Have you worked on any databases?
+ 🔸 What is the ssh-keygen command in Linux and why is it used?

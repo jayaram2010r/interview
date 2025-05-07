@@ -141,3 +141,4 @@ k get deployments -n dev
 k run httpd --image=httpd:alpine --port=80 --expose=true --->ClusterIP service same name as httpd
 k get svc
 k describe svc httpd
+k describe node node01

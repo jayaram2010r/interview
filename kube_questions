@@ -142,3 +142,5 @@ k run httpd --image=httpd:alpine --port=80 --expose=true --->ClusterIP service s
 k get svc
 k describe svc httpd
 k describe node node01
+k taint node node01 jayaram:NoSchedule
+k taint node node01 jayaram:NoSchedule-

@@ -1,5 +1,9 @@
 Kubernetes Interview Questions (3+ Years Experience)
 
+• ENTRYPOINT sets the main command that always runs when the container starts.
+
+• CMD provides default arguments for that command (or acts as the command if ENTRYPOINT isn’t set).
+
 1. What is the difference between ClusterIP and ExternalName service types?
 
 2. How does Kubernetes handle failed liveness probes over time?
@@ -144,3 +148,7 @@ k describe svc httpd
 k describe node node01
 k taint node node01 jayaram:NoSchedule
 k taint node node01 jayaram:NoSchedule-
+kubectl label node node01 Colour=green
+kubectl describe node node01 
+k describe node node01 | grep Taints
+k describe node controlplane | grep Taints

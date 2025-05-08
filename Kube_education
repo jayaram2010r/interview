@@ -1,0 +1,359 @@
+
+❓ Environment Variables vs ConfigMaps
+
+💎 Environment Variables are set directly in a pod configuration to pass configuration data to a container. They're fixed once the container starts.
+
+💎 ConfigMaps are Kubernetes objects used to store configuration data separately from container images, making it easier to manage and share configurations across different containers. They can be updated independently of container images.
+
+In practice, you can use ConfigMaps to store your configuration data and then use those data as Environment Variables in your containers. 
+This approach combines the flexibility of ConfigMaps with the simplicity of using Environment Variables.
+
+❓CRD in Kubernetes
+Custom Resource Definition (CRD) is a powerful feature that allows users to extend the Kubernetes API with their own custom resources. This capability enables the Kubernetes ecosystem to be extended in a standardized and manageable way, allowing the creation of new types of objects beyond the built-in resources like Pods, Services, and Deployments.
+
+💠 Key Concepts
+🔸Custom Resource Definition (CRD): Defines a new type of resource.
+🔸Custom Resource (CR): An instance of a CRD.
+
+💠Use Cases
+🔸 Implementing the Operator pattern to manage complex applications.
+🔸Defining custom workflows or domain-specific logic.
+🔸Extending Kubernetes capabilities for specific needs like custom load balancers or monitoring setups.
+🔸CRDs make Kubernetes flexible, allowing it to manage a wide range of applications and services.
+
+❓ Liveness Probe vs Readiness Probe
+
+🔅 Liveness Probe: Determines if a container is running properly. If the liveness probe fails, Kubernetes will restart the container. This helps to ensure that your application recovers from problems like deadlocks or other issues that make it unresponsive.
+
+🔅Readiness Probe: Checks if a container is ready to handle requests. If the readiness probe fails, Kubernetes stops sending traffic to the container until it passes the probe again. This is useful for ensuring that traffic is only sent to containers that are fully started up and ready to process requests.
+
+Both probes help manage container states to improve the reliability and availability of services in Kubernetes.
+
+🔯 Node Affinity in Kubernetes
+
+Node Affinity is a feature in Kubernetes that allows you to control on which nodes your pods should run, based on labels given to the nodes.
+
+In the real world, some nodes may have GPUs, some may have SSDs for storage, and some may be low-power machines used for testing.
+
+If your application needs SSD storage, you can set rules in the pod YAML to make sure it runs only on nodes that have the label.
+
+🔷 Two main types of Node Affinity:
+🔸 requiredDuringSchedulingIgnoredDuringExecution(Hard requirement):
+The pod must be scheduled on a node that matches the rule.If no matching node is found, the pod will stay in the Pending state.
+
+🔸 preferredDuringSchedulingIgnoredDuringExecution(soft requirement):
+ Kubernetes Scheduler will try to place the pod on matching nodes. If not , it will still run the pod on any available node.
+
+▶️ Pod Affinity in Kubernetes
+
+Pod Affinity is a feature in Kubernetes that allows you to control how pods are scheduled on nodes based on their relationship with other pods. 
+It is a way to tell Kubernetes to place certain pods (applications) close to other pods on the same node or nearby nodes.
+
+Imagine you have a frontend app (like a website) and a backend app (like a database). If the frontend and backend are on different servers, 
+it might take longer for them to talk to each other. With pod affinity, 
+you can ask Kubernetes to place the frontend and backend on the same server (or nearby servers) so they can communicate faster.
+
+❓How can we determine if someone with access to the Kubernetes CLI deleted a resource?
+
+🫛 We can do that using Kubernetes Audit Logs, as it records all the requests made to Kubernetes API server. 
+These logs capture all the information on who made the request, when was it made and the type of request and resource it is targeting and what is the outcome of that action.
+
+If you are using a managed service like AWS EKS, Azure AKS, or GCP GKE, check their respective logging tools (e.g., CloudTrail, Azure Monitor, or Google Cloud Logging).
+
+❓ What is OpenTelemetry and Why is it Important?
+
+OpenTelemetry is a tool that helps manage metrics, logs, and traces in one place.
+
+Imagine your application uses different tools for monitoring i.e., Prometheus for metrics, ELK for logs, and Jaeger for traces. Now, suppose you want to switch from Prometheus to Datadog for metrics. Normally, you would have to update all projects that uses Prometheus. But with OpenTelemetry, you only update the OpenTelemetry configuration, and all your applications will automatically start sending data to Datadog instead.
+
+Example:
+1️⃣ Your app sends logs, metrics, and traces to OpenTelemetry.
+2️⃣ OpenTelemetry forwards the data to Prometheus, ELK, and Jaeger.
+3️⃣ If you switch to Datadog, you only change one config file in OpenTelemetry instead of updating every project.
+
+This saves time, reduces effort, and keeps monitoring flexible!
+
+
+Observability: Metrics, Logs, and Traces
+
+There are three key pillars in Observability: metrics, logs, and traces. Each serves a different purpose in identifying and troubleshooting issues.
+
+🔹 Metrics – These provide a high-level overview of system health, often visualized in graphs or dashboards. For example, if an error rate spikes, a tool like Prometheus or Grafana can help you detect it quickly.
+
+🔹 Logs – These contain detailed information about events, errors, and processes. Once an issue is detected via metrics, ELK stack (Elasticsearch, Logstash, Kibana) can help you analyze logs to pinpoint the exact cause.
+
+🔹 Traces – These track requests as they move through different services, helping in debugging performance bottlenecks or failures. Tools like Jaeger or APM (Application Performance Monitoring) provide deep insights into service-to-service communication.
+
+For example, imagine a user reports slow page loads.
+Metrics will show high response times, Logs will help identify if a database query is taking too long and Traces will show the request path, revealing which service is causing the delay.
+
+🔵 Horizontal Pod Autoscaler (HPA): 
+🔸 HPA automatically adjusts the number of pods in a deployment, replica set, or stateful set based on observed CPU, memory usage, or custom metrics.
+🔸 It monitors resource usage (e.g., CPU, memory) or custom metrics of pods and compares the observed metrics against a target value specified in the HPA configuration.
+🔸 Scales the number of pods up or down to maintain the target utilization.
+
+🔵 Vertical Pod Autoscaler (VPA):
+🔸 VPA automatically adjusts the resource requests and limits (e.g., CPU and memory) for pods to match their actual usage, ensuring efficient resource utilization.
+🔸 Monitors the historical and current resource usage of pods.
+🔸 Recommends, or optionally applies, new resource requests and limits for pods.
+🔸 If enabled for automatic updates, pods are restarted to apply the new resource configuration.
+
+🔵 ClusterIP :
+🔸 In Kubernetes if you don't specify a IP type while creating service it will be Cluster IP as it is a kind of default service type.
+🔸 Cluster IP can only be accessed within the Kubernetes cluster and is used when one service, pod, or node inside the cluster needs to communicate with another service.
+🔸 You can’t directly access a ClusterIP service from outside the cluster, making it suitable for internal systems like databases or micro services.
+
+🔵 NodePort:
+🔸 NodePort makes the service accessible from outside the cluster by opening a specific port on every node.
+🔸 To connect to the service, you use the IP address of any cluster node and the port number Kubernetes assigns or we can even specify it.
+🔸 Kubernetes assigns NodePorts within a specific range (default: 30000–32767).
+🔸 Kubernetes balances the traffic across all nodes in the cluster that expose the service.
+🔸 While it’s easy to use, it’s not ideal for production setups because it’s less flexible and secure compared to other options like LoadBalancer or Ingress.
+
+🔸 LoadBalancer Service:
+LoadBalancer service in Kubernetes exposes the application to the external world traffic by creating a load balancer from the cloud provider (e.g., AWS ELB, GCP Load Balancer, Azure Load Balancer) depending on which cloud provider the cluster is running.It forwards the traffic to the specified service within the cluster.This is mostly used for single-service deployments where service needs external access.
+
+🔸 Ingress:
+Ingress in Kubernetes is an API object that manages the external traffic to services in kubernetes cluster, such as HTTP and HTTPS traffic.It provides more routing capabilities compared to a Load Balancer service as below.
+
+🔹 Path-based routing: Direct traffic to different services based on the URL path (e.g., /path1 to one service and /path2 to another).
+
+🔹 Domain-based routing: Route traffic based on host names (e.g., app1.example.com to one service and app2.example.com to another service).
+
+🔹 TLS termination: Handle SSL/TLS encryption to provide secure connections.
+
+❓ What are Kubernetes events and how are they useful?
+
+Kubernetes Events are resources that offer valuable insights into the kubernetes cluster's operational state, explaining why the failures are encountered. 
+They serve as a helpful tool for understanding the behavior and status of Kubernetes resources.
+These events are triggered whenever there is a state change in cluster.
+By default, they are not stored permanently but are retained in "etcd," the Kubernetes key-value data store, for a limited duration (usually about one hour). 
+
+❓ How to check Kubernetes Events
+
+🔵 kubectl describe <RESOURCE> <NAME>
+This command provides detailed information about the resources with the events section at the end.
+🔵 kubectl get events -n <namespace>
+This command provides details about all the events occurring within the specified namespace. 
+You can use it in combination with a grep command to filter and focus on events related to your deployment.
+
+❓ Namespaces in Kubernetes
+
+Namespaces in Kubernetes are a way for dividing cluster resources, allowing multiple users or teams to operate within the same cluster without interfering with each other. They provide a level of isolation for resources such as Pods, Services, making it easier to manage and secure resources.
+
+Below is the command to check all the namespaces in a cluster:
+ ✴️ kubectl get ns
+
+❓ ResourceQuotas in Kubernetes
+
+ResourceQuotas in Kubernetes help manage resource consumption within a namespace by setting limits on CPU, memory, and storage utilization, ensuring fair distribution of resources among different applications and preventing any single application from consuming the cluster's resources.
+
+Below is the command to check all the quota assigned to a namespace:
+ ✴️ kubectl get quota -n <ns>
+
+❓kubectl top command
+
+As many of you know the kubectl is a command line tool which allows us to execute the commands on the Kubernetes cluster. Under the hood kubectl communicates with the API server and is responsible for all the communication between the resources in the cluster.
+
+kubectl top command provides real-time insights of resources usage(CPU, memory) across the cluster. Here are the top 5 mostly used commands:
+
+🌠 Monitor node resources: kubectl top node <nodename> -containers
+🌠 Track pod resource usage: kubectl top pod
+🌠 View specific namespace: kubectl top pod -n <namespace>
+🌠 Sort by CPU usage: kubectl top pod --sort-by=cpu -n <namespace>
+🌠 Sort by memory usage: kubectl top pod --sort-by=memory -n <namespace>
+
+List of the top 10 Kubernetes commands that most DevOps engineers use daily:
+
+💎 kubectl get: List resources in a cluster.
+🔯 kubectl get pods /services /deployments
+💎 kubectl describe: Show detailed information about a resource.
+🔯 kubectl describe pod <pod-name> /service <service-name>/ deployment <deployment-name>
+💎 kubectl logs: Fetch logs from a pod.
+🔯 kubectl logs <pod-name> /kubectl logs <pod-name> -c <container-name>  # For multi-container pods
+💎 kubectl exec: Execute a command in a container.
+🔯 kubectl exec -it <pod-name> -- /bin/bash
+💎 kubectl apply: Apply a configuration to a resource by filename or stdin.
+🔯 kubectl apply -f <file.yaml>
+💎 kubectl delete: Delete resources by filenames, stdin, resources, and names.
+🔯 kubectl delete pod <pod-name>/kubectl delete -f <file.yaml>
+💎 kubectl scale: Scale the number of replicas of a deployment.
+🔯 kubectl scale deployment <deployment-name> --replicas=<number>
+💎 kubectl rollout: Manage the rollout of a deployment.
+🔯 kubectl rollout history deployment <deployment-name>
+💎 kubectl port-forward: Forward one or more local ports to a pod.
+🔯 kubectl port-forward <pod-name> <local-port>:<pod-port>
+💎 kubectl config: Modify kubeconfig files.
+🔯 kubectl config get-contexts /use-context / set-context
+
+❓ How to view the logs from a Kubernetes pod for the past hour?
+
+To view the logs from a Kubernetes pod for the past hour, you can use the below kubectl logs command with the --since option. Here's the command format:
+💠 kubectl logs POD_NAME --since=1h
+
+Replace POD_NAME with the actual name of your pod. If your pod contains multiple containers, you'll need to specify the container from which you want to view logs by adding the -c or --container flag.
+💠 kubectl logs POD_NAME -c CONTAINER_NAME --since=1h
+
+❓ Resource limits in Kubernetes
+
+Resource limits in Kubernetes help control how much CPU and memory each container can use. They prevent any single container from using too much of the available resources, ensuring all containers run smoothly and efficiently. This helps in managing costs, maintaining stable performance, and improving security by limiting the impact of problematic applications.
+
+To set limits on how much CPU and memory a container can use in a Kubernetes pod, add the resources field to the container's settings in the pod's YAML file. Below is the example:
+
+spec:
+ containers:
+ - name: example-container
+ image: example-image
+ resources:
+ requests:
+ memory: "64Mi" 
+ cpu: "250m" 
+ limits:
+ memory: "128Mi" 
+ cpu: "500m"
+
+🐌 Deployment Vs StatefulSet in Kubernetes.
+
+In Kubernetes, both Deployments and StatefulSets are used for managing and scaling application workloads, but they serve different purposes and have distinct characteristics.
+
+🐍 Purpose:
+❗ Deployment: Deployments are primarily used for stateless applications. They manage replica sets of pods, ensuring that a specified number of identical pods are running at any given time. Deployments are suitable for applications that can scale horizontally and don't require stable, unique network identifiers or persistent storage.
+
+❗StatefulSet: StatefulSets, on the other hand, are designed for stateful applications that require stable, unique network identifiers, persistent storage, and ordered, graceful deployment and scaling. They are used for applications like databases, where each instance has its own identity and state that needs to be maintained.
+
+🐍 Pod Identity:
+❗Deployment: Pods managed by a Deployment are interchangeable and stateless. Each pod can be replaced by another pod with no impact on the overall system.
+
+❗StatefulSet: StatefulSet pods have stable, unique identities. Each pod in a StatefulSet maintains its own identity, host name, and persistent storage. This allows stateful applications to maintain their state across pod restarts or rescheduling.
+
+🐍 Scaling and Ordering:
+❗Deployment: Deployments are focused on scaling horizontally. They can quickly scale up or down the number of pods in response to changes in load or desired configuration. However, there is no inherent notion of ordering among pods.
+
+❗StatefulSet: StatefulSets support both scaling horizontally and vertically. They can scale horizontally by adding or removing instances, but they also maintain a stable, ordered set of pods. Scaling operations are performed in a controlled manner, ensuring that each pod is scaled or updated in sequence, maintaining the application's state consistency.
+
+🐍 Persistent Storage:
+❗Deployment: While Deployments can use persistent storage, they don't inherently manage the lifecycle of the storage volumes associated with their pods. The storage volumes are typically managed separately and may not be tied to the lifecycle of the pods.
+
+❗StatefulSet: StatefulSets manage the lifecycle of persistent storage volumes along with the pods. Each pod in a StatefulSet typically has its own persistent volume, and the volume's lifecycle is tied to the lifecycle of the pod. This ensures that data is preserved even if a pod is rescheduled or replaced
+
+❓ Annotations in Kubernetes
+
+The below example will demonstrate how to add annotations for various purposes, such as providing deployment details, ownership information, and custom settings.
+
+Suppose we have a deployment for a web application. We want to add annotations to :
+🔸 Describe the application
+🔸 Indicate the owner or maintainer
+🔸 Provide version information
+🔸 Store custom configuration settings
+
+Here's how you can structure the YAML configuration for this deployment:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: web-app
+ annotations:
+ description: "Deployment for the web application"
+ owner: "Jane Doe"
+ version: "1.2.3"
+ configChecksum: "abc123"
+spec:
+ replicas: 3
+ selector:
+ matchLabels:
+ app: web-app
+ template:
+ metadata:
+ labels:
+ app: web-app
+ spec:
+ containers:
+ - name: web-app-container
+ image: my-web-app:1.2.3
+ ports:
+ - containerPort: 80
+ env:
+ - name: CONFIG_CHECKSUM
+ valueFrom:
+ fieldRef:
+ fieldPath: metadata.annotations['configChecksum']
+
+You can view the annotations on a Kubernetes object using the below kubectl describe command:
+🔸 kubectl describe deployment web-app
+
+Annotations provide a powerful way to add additional context and metadata to Kubernetes objects, enhancing the manageability and understanding of your deployments.
+
+❓ Ingress in Kubernetes
+
+Ingress in Kubernetes is a resource used to manage external access to services within a Kubernetes cluster, typically HTTP and HTTPS routes. It allows you to define rules for routing traffic to specific services based on the host and path of the incoming requests. 
+
+💎 Key Concepts
+🔶 Ingress Resource: A collection of rules that allow inbound connections to reach the cluster services.
+🔶 Ingress Controller: A daemon responsible for implementing the Ingress rules. Popular Ingress controllers include NGINX, Traefik, and HAProxy.
+🔶 Service: An abstract way to expose an application running on a set of Pods.
+
+💠 Architecture of Kubernetes:
+
+Kubernetes, often abbreviated as K8s (K-8 letters between 'K' and 's'), is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. Its architecture consists of several components working together to provide a robust and scalable platform for managing containerized workloads. 
+
+🔷 Master Node:
+🔸 API Server: The central management point for the Kubernetes cluster. All administrative tasks and communication within the cluster occur through the API server. It exposes the Kubernetes API, which allows users to interact with the cluster.
+
+🔸 Scheduler: Assigns newly created pods (groups of containers) to nodes in the cluster based on resource requirements and constraints.
+
+🔸 Controller Manager: Manages various controllers that regulate the state of the cluster. These controllers include Node Controller, Replication Controller, Endpoint Controller, and others.
+
+🔸 etcd: A distributed key-value store that stores the cluster's configuration data, state, and metadata. It ensures data consistency and serves as the cluster's primary data store.
+
+🔷 Worker Node :
+🔸 Kubelet: An agent that runs on each worker node and communicates with the API server. It manages the containers on the node, ensuring they are running and healthy.
+
+🔸 Kube Proxy: Manages network communication between pods, both within the cluster and with external networks. It maintains network rules and performs packet forwarding.
+
+🔸 Container Runtime: The software responsible for running containers, such as Docker or containerd. Kubernetes supports various container runtimes, allowing flexibility in the choice of containers.
+
+🔷 Networking:
+🔸 Container Network Interface (CNI): Defines how network connectivity is established between pods across nodes. Various CNI plugins, such as Calico, Flannel, and Weave, can be used to implement networking in Kubernetes.
+
+🔸 Service Proxy: A component within each node that forwards traffic to the appropriate pod based on the service's IP address and port. It enables service discovery and load balancing within the cluster.
+
+
+❓Contexts in Kubernetes
+In Kubernetes, a context is a configuration entity within a kubeconfig file that defines a cluster, namespace, and user combination. It allows you to switch between different clusters and namespaces easily.
+
+❓How to Set Contexts
+To create a new context, you use the below kubectl command and it requires you to specify a name for the context and, optionally, the cluster, namespace, and user you want to associate with it.
+
+🌼 kubectl config set-context CONTEXT_NAME --cluster=CLUSTER_NAME --namespace=NAMESPACE --user=USER_NAME
+
+❓ Helm and why is it essential for DevOps Engineers?
+
+Helm is a package manager for Kubernetes that simplifies installing, upgrading, and managing applications using charts with just a few commands.
+
+For DevOps engineers, Helm is essential because it automates app deployments, reducing manual effort and speeding up the process. It also tracks versioning, making it easy to manage upgrades or rollbacks for any release. Additionally, Helm ensures consistent deployments across all environments, from development to production.
+
+Lets understand the terminology in helm:
+
+✴️ Chart: A Helm chart is a package with all the resources needed to deploy an app in Kubernetes.
+✴️ Repository: A repository is a storage location where Helm charts are shared and accessed.
+✴️ Release: A release is an installed instance of a Helm chart in your Kubernetes cluster.
+✴️ Values File: A values file customizes chart configurations for specific environments.
+✴️ Template: A template defines how Kubernetes manifests are created based on the values file.
+✴️ Revision: A revision tracks changes made to a release, enabling versioning and rollbacks.
+
+Helm commands DevOps Engineers use on daily bases:
+
+✴️ helm install: Installs an application (release) from a Helm chart into a Kubernetes namespace.
+ - helm install <release-name> <chart> -n <k8s-namespace>
+✴️ helm upgrade: Updates an already installed release with a new version or configuration.
+ - helm upgrade <release-name> <chart> -n <k8s-namespace>
+✴️ helm list: Lists all installed releases in a specific namespace or across the cluster.
+ - helm list -n <k8s-namespace>
+✴️ helm rollback: Rolls back a release to a previous version while creating a new revision.
+ - helm rollback <release> <revision> -n <k8s-namespace>
+✴️ helm uninstall: Removes a release and all its associated resources from the cluster.
+ - helm uninstall <release-name> -n <k8s-namespace>
+✴️ helm create: Creates a basic Helm chart structure for deploying applications.
+ - helm create my-chart
+✴️ helm lint: Validates a Helm chart for syntax or structural errors.
+ - helm lint <chart-directory>

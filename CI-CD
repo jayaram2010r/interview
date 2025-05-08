@@ -1,0 +1,16 @@
+
+Set up Azure DevOps project & repos.
+
+Define environments (Dev, QA, Prod).
+
+Configure service connections (AKS, ACR).
+
+Create CI pipeline (build Docker image).
+
+Create CD pipeline (deploy to environments).
+
+Add approvals for Prod.
+
+Use variables for secrets.
+
+Monitor deployments.

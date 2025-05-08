@@ -9,7 +9,8 @@ In practice, you can use ConfigMaps to store your configuration data and then us
 This approach combines the flexibility of ConfigMaps with the simplicity of using Environment Variables.
 
 ❓CRD in Kubernetes
-Custom Resource Definition (CRD) is a powerful feature that allows users to extend the Kubernetes API with their own custom resources. This capability enables the Kubernetes ecosystem to be extended in a standardized and manageable way, allowing the creation of new types of objects beyond the built-in resources like Pods, Services, and Deployments.
+Custom Resource Definition (CRD) is a powerful feature that allows users to extend the Kubernetes API with their own custom resources. 
+This capability enables the Kubernetes ecosystem to be extended in a standardized and manageable way, allowing the creation of new types of objects beyond the built-in resources like Pods, Services, and Deployments.
 
 💠 Key Concepts
 🔸Custom Resource Definition (CRD): Defines a new type of resource.

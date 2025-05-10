@@ -402,7 +402,7 @@ What is Docker file and how you create it--------------------->dockerfile is a f
 Why we are starting with from in Docker file. Why we are using it------------>The FROM command initializes a new build stage and sets the base image for subsequent instructions in the Dockerfile. It essentially tells Docker which existing image to use as a starting point, which can be any valid image from Docker Hub or a custom image from a local repository
 What are the resources you worked on till now--------------------->kv, storage acount, msi, app service, traffic manager
 Why we are using traffic manager--------------->we use traffic manager to distribute the tarffic accross global regions
-How many types of load balanacers in azure-------------------->5. 
+How many types of load balanacers in azure-------------------->4. 
 Different layers in traffic manager In aure--------------->it operats at dns level. dns resolution: it responds to dns query by using ip adress. traffic routing methods: 
 Why we are using 7 layer What is the use of it
 Add a key vault using powershell------------------->New-AzKeyVault -ResourceGroupName "myResourceGroup" -VaultName "myKeyVault" -Location "EastUS"
@@ -530,7 +530,7 @@ CAPGEIMI: L1 interview(2025)
 
 tell me about yourself
 i have 40 commits but i want only 3 specific commits and merge them into master. how to do it?--------> git cherry-pick <commit1> <commit2> <commit3>
-i have 40 commits but now i want to merge them into 3. how can we do it?------------->You can squash your 40 commits into 3 using interactive rebase.  git rebase -i HEAD~40. once we get the window modify the pick to sqaush and then commit it. by this we can do 40 comits to 3
+i have 40 commits but now i want to merge them into 3. how can we do it?------------->You can squash your 40 commits into 3 using interactive rebase.  git rebase -i HEAD~3. once we get the window modify the pick to sqaush and then commit it. by this we can do 40 comits to 3
 i have some code but it is not there in the stage to commit. i want to save in working directory so that i can use it later. how to do it?--------->You can use git stash to save your uncommitted changes in the working directory and apply them later when needed. <git stash apply>
 i have some work and added using git add. but now i want to revert this change how can we achieve it?---------->git reset HEAD <file> or git reset .
 what is service connection and how we will configure?---------------> we use this when we want to connect azure resources or external resources with azure pipelines. to create SC we first have to go to project settings in ADO and look for service connection. create new SC and select the arm and after that choose the service principal or MSI and give neccesary tenant id, sub id, service key, name and click on create
@@ -567,7 +567,7 @@ To create a VM in Azure using Terraform, you need the following:
 ✅ Public IP (Optional) – To access the VM externally.
 ✅ Network Security Group (NSG) – To control traffic.
 ✅ Network Interface Card (NIC) – Connects the VM to the network.
-✅ VM Configuration – OS type, size, admin credentials.
+✅ VM Configuration – OS type, size, admin credentials, storage account
 what is datablocks in terraform------------>we use this when we want to know the details of existing resources. we use resource blk to create a new resource
 what is tfstate file and how u are storing in your current project. is it locally or remote------------>In Azure DevOps, Terraform state is typically stored remotely using Azure Storage. tf state consists of metadata. it tells us what are the resources are desired and actual resources
 what is docker volume-------->used for storing databases, logs, or application data. we use it as a backup. when we make any changes in 1 volume it will reflect in other volumes as well if we share it
@@ -676,7 +676,7 @@ i want to deploy the webapp in diff env. how to do it--------->create diff stage
 dotnet restore or dontnet test is there in your yaml. are u not using it
 without dotnetrestore is it going to work. is it going to deploy webapp------>Yes, the pipeline will still deploy the web app even without dotnet restore and dotnet test, but it is not recommended for production. if we dont use test then bugs and code validation is not done.
 what are doing with you arm template. how you are deploying it
-i have webapp and storage blob storage. now i want to access the webapp using blob. how to do it--------->give storage blob contributor in webapp IAM
+i have webapp and storage blob storage. now i want to access the webapp using blob. how to do it--------->give storage blob contributor in storage account using msi. add msi in webapp.
 what are event driven things in functional app. how u used to trigger
 Trigger                     Type	              Description	Example Use Case
 HTTP                        Trigger	            Triggered via HTTP request	API endpoints, webhooks
@@ -840,7 +840,7 @@ SONATA:
 
 for eg when there is a resource in terraform but i dont want to use this as it is damaged when i do apply. how to do it----------->we can use terraform taint for the resources. terraform taint type.name. when we use this and terraform apply the tainted resource is deleted and a new one is created.
 tell me about the ci/cd pipelines which you have deployed
-what are the build tools which you are currently using------->dotner CLI
+what are the build tools which you are currently using------->dotnet CLI
 how do you take care of parallel build in pipeline--------------------->give multiple jobs in yaml file. they will run paralelly
 for an automatic trigger what u will do for pipeline------------------->cron, branches, manual trigger, changes in folder
 Continuous Integration (CI) Trigger: Runs the pipeline whenever code changes are pushed to the repository.
@@ -886,7 +886,7 @@ list all vms in stopped state in 1 rg-------------->az vm list --resource-group 
 for 1 resource i want to give reader permission. how to do it using powershell-------------->New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName $roleDefinitionName -Scope $resourceId
 diff access control mechanisms in azure----------->msi,aad,rbac,iam
 if i want to add new environment to a varibale how to do it using powershell for app service--------------------->Set-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName -AppSettings $appSettings.Properties
-give me the example how you solved performance issue using azure monitor
+give me the example how you solved performance issue using azure monitor--------->for a webapp there is high traffic during peak hr. so we adapted autoscaling of vm so when the cpu >80 then it should increase the vm
 how terraform is integrated with ado
 
 -------------------------------------------------------------------------------------------------
@@ -895,13 +895,13 @@ HEXAWARE:
 tell me about your self
 things that are there in terraform file
 i want to deploy 10 reosurces at a time. how to do it in terraform----------->use count fucntion
-i want to deploy 10 resources with diff configuration how to do it in terraform----------->use foreach()
+i want to deploy 10 resources with diff configuration at diff locations, how to do it in terraform----------->use foreach()
 why we use output file in terraform-------->we use output files (or just outputs) to expose useful information about the infrastructure we've provisioned.
 what is diff between variable and tfvar file--------->variable define the inputs, their types, defaults, and descriptions while tfvar file actually give values to the variables you declared earlier
 how do you secure state file--------->store it in remote account. give limited acces to remote state file using rbac and iam control
 when there is a conflict in terraform how do you handle it---------->use blob lease lock
-there is a manual edition in cloud. how do you handle it------->use terraform refresh and plan and apply it
-when we do terraform refresh where the file will be chnaged is it state file? if it is state file then how the main.tf is changed------->use terraform refresh and plan and apply it
+there is a manual edition in cloud. how do you handle it------->use terraform refresh 
+when we do terraform refresh where the file will be chnaged is it state file? if it is state file then how the main.tf is changed------->Check the updated values in terraform show or the terraform.tfstate file. Manually copy important values into your main.tf
 give me the structure of ci/cd pipeline
 what jobs are executed in build
 what are agent pools-------------->An agent pool is a collection of agents used in Azure DevOps and Azure Container Registry to run tasks and pipelines.
@@ -910,7 +910,7 @@ how you provision vms. how do you deploy your code in webapp--------------->we c
 what are all the things that are required for docker
 architecture of k8
 how you store secrets
-diff between service principal and msi------------->service principal is mainly used to authentaticate the appplications. msi is used to access resources from other resource
+diff between service principal and msi------------->service principal is mainly used to authentaticate the appplications and it works accross multiple tenants, mainly used in ci/cd pipelines. msi is used to access resources from other resource. doesnot create secrets and can only be used in same tenants
 do you have experience in building db pipeline
 any certifcations in azure
 what are the applications you have build and deploy'----------->web applications
@@ -932,7 +932,7 @@ Agent.TempDirectory: A temporary directory used by the agent for various tasks d
 what is git cherrypick
 diff between merge and rebase
 how to create new branch
-deployemnt startegies you follow in your project 
+deployemnt startegies you follow in your project ----------->blue-green, others are canary and rollback
 if you deployed wrong version. how do you go back to previous version-------------->use git revert and push the chnages again
 how do you do code analysis in your project--------->microsoft defender
 
@@ -942,7 +942,7 @@ FNF:
 tell me about yourself
 have you ever created infra part completely using terraform---------> 
 how do you use terraform in azure pipeline------------>we give working directory path in yaml. thats how it will get to know the tf files and execute them. we neeed rg, storage,container,key, service connection, working directory in task
-where does statefile reside in azure------------->storage account
+where does statefile reside in azure------------->storage account in blob
 how do you lock the terraform state file-------> if we use terraform backend in files then it will automatically use blob lease lock. nothing extra needed
 where we do use that in locking mechanism in azure--------------->Navigate to your storage account in the Azure Portal.
 Go to the Containers section and select the container that contains your blob.
@@ -985,7 +985,7 @@ User-Assigned Managed Identity
 Description: This type of identity is created as a standalone Azure resource and can be assigned to one or more Azure resources.
 Lifecycle: The identity is managed independently of the resources that use it, allowing for more flexible and reusable identity management1
 where you are deploying your app---------------->webapp
-types of service bus and how will be sending messages----------->Azure Service Bus is used for reliable messaging between distributed applications
+types of service bus and how will be sending messages----------->Azure Service Bus is used for reliable messaging between distributed applications. 1. Queues (Point-to-Point). one sender one receiver. 2. 2. Topics and Subscriptions (Publish-Subscribe). one sender multiple receivers
 anything on fucntion app
 architecture of k8
 
@@ -994,15 +994,250 @@ HAPPIESTMINDS:
 
 what is taint in terraform------->n Terraform, a taint is a way to manually mark a resource for destruction and recreation during the next apply. It’s useful when a resource is in a bad state or needs to be recreated without changing the configuration
 what are the types of metrics in azure monitoring-------------->CPU Usage (for VMs), Disk I/O (for VMs), Network Traffic (for VMs or load balancers), Request Count (for storage accounts),Response Time (from Application Insights), Failure Rate (from Application Insights), Server Response Time (from Azure App Services), Resource Utilization (e.g., VM memory, CPU), User Sign-ups per Hour
-what are facts in azure artifacts
+what are feeds in azure artifacts--------->they are like a package repositiries where you can host, share, manage your packages. it also control who can access the packages. it can host various packages types like nuget, npm, maven etc. it can be organizational or project based feeds.
 what is ingress in k8-------------->Ingress is a Kubernetes object that manages external access to services in a cluster, typically HTTP and HTTPS traffic.
 It acts as an entry point into your cluster — think of it like a reverse proxy or router that maps incoming requests to the appropriate backend services.
 what is meamory leak------------->A memory leak is when a program allocates memory but fails to release it after it's no longer needed — causing memory usage to grow over time and eventually slow down or crash the system. eg when the object is not in use but still being refered then memory will take lot of time thus degrading the performance
 why we use fork------------>when we want other persons repo to our repo then we use fork
 why we use git stash------------->We use git stash to temporarily save your uncommitted changes (both staged and unstaged) without committing them — so you can switch branches or pull updates without losing your work
 how to optimize image in docker-------->use multi stage build, combine multiple run and cmd commands, install only the reuired dependencies, use .dockerignore file to remove unnecessary files. install the image from official website
-why we use docker compose---------->We use Docker Compose to define and manage multi-container Docker applications using a simple YAML file. It’s your best friend when an app needs more than one service — like a web server, database, cache, etc.
-what are the issues that you have faced while deploying pipelines
+why we use docker compose---------->We use Docker Compose to define and manage multi-container Docker applications using a simple YAML file. It’s when an app needs more than one service — like a web server, database, cache, etc.
+what are the issues that you have faced while deploying pipelines----------->service connection not working, resources already exists, permission and authentication issues, resource quota issue, incorrect file path, yaml syntax issues, secrets being exposed, dependencies not installed, approval delays, pipeline not triggered from the mentioned branch, missing variables.
 how do you define variables in powershell-------->$keyvault="keshavi". new-azkeyvault -Name $keyvault
 what are self hosted and microsoft hosted agents in azure-------->microsoft agents are the agents that are maintained by azure. used for simple azure pipelines, we need to wait long time inorder to run our pipeline using this. less control. whereas self hosted agent has full control as it is prepared by us. used for complex pipelines. we dont have to wait for the pipelines to be run
 -----------------------------------------------------------------------------------------------------------------
+Ascendion:
+
+tell me about yourself
+how you are storing your keys in k8------------>use kv+msi and give limited access using iam and rbac
+what is the need of terraform--------->Terraform is an Infrastructure as Code (IaC) tool that helps you provision, manage, and version infrastructure safely and efficiently across multiple cloud providers
+tell me the things you have done in terraform
+tell me something about jenkins
+tell me about your pipeline
+do you have any knowledge in python
+steps in github actions
+where do you store artifact--------->Use Azure Artifacts for code package management.(nuget package---->.zip is artifact generated(.dll format))
+Use Blob Storage for raw binary files or large build artifacts.
+Use ACR for Docker images and Helm charts.
+how to create docker image
+-----------------------------------------------------------------------------------------------------------------
+smartek21:
+
+tell me about yourself
+the app is down as soon as you apply new patches. what steps you would take in such case---------->rollback to the previous version, check system logs, application logs, cpu crash, memory usage, diff between previous and new code, check any break in connection strings or secrets expired, test it again in test environment, include rollback or canary deployment, fix the issue, document the issue. if everyhting works fine then push the code to prod
+what is the reactive and proactive methods for the above situation--------->Canary is a proactive strategy to safely test changes.
+Rollback is a reactive strategy to recover from failed changes.
+what are the development startegies while deploying to production------------>ci/cd pipeline, iac code, blue-green deployment(safe rollback), secret management, automated test cases, canary(fast rollback), rollback(no downtime, requires less infra than blue-green)
+how do you manage the secrets
+i want to deploy new micro service. how do you handle this------------->plan the service, secret management, monitoring apps, deploy to lower env, document and verify
+your team is growing from 5 to 50. how do you handle pipeline
+you reduces 25% of vulnerabilities of security issues. what did u do------------->Replaced hardcoded credentials with environment variables or identity-based access, 🔐 1. Introduced Automated Security Scanning using microsoft defender for cloud, Enforced branch protection rules & PR checks for security issues, setup microsoft defender to monitor and respond to alert faster. Microsoft.Authorization/roleAssignments, 
+resource "azurerm_role_assignment" "example" {
+  principal_id   = azurerm_azuread_service_principal.example.id
+  role_definition_name = "Reader"  # You can replace this with other roles like Contributor, Owner, etc.
+  scope           = azurerm_resource_group.example.id  # The scope can be a subscription, resource group, or resource.
+}
+for eg you are working in 3 tier architecuture. how do you combine multiple container ad how does it communicate with each other in docker---------->use docker compose for multi container app, use docker network for communicating between them
+how do you achieve the performance using iac tools--------->used autoscaling property in iac tools, choose correct cpu,memory, network, use ci/cd pipeline to rollback and update  the code automatically
+you are asked to create multi regions architecture in k8--------->Creating a multi-region architecture in Kubernetes (K8s) involves deploying clusters across multiple regions to ensure high availability, fault tolerance, and disaster recovery
+where you are deploying your code--------->web application hosted on Virtual Machines (VMs) behind a Virtual Machine Scale Set (VMSS)
+how do you store secrets in AKS----------->use kv+msi and give limited access using iam and rbac
+reason for change
+---------------------------------------------------------------------------------------------------------------
+Cognizant:
+
+what are the things that are there in azure devops portal. explain each of them
+do you have any idea on module
+tell me the steps that are there in your pipeline
+where do you store your artifacts
+tell me how you optimize the docker image
+what is the need of docker
+if you have to create a vm then how do you do it through modules
+what is a pipeline
+how do you connect ado with other things----------->we use service connction
+how do you integrate terraform with ado
+how do we create a new repo in ado
+why did you use powershell--------->it is used to modify the configuration files for the application where it support geo graphic regions. we automated using powershell where it will replace the placeholders with actual config values and sending alerts or emails to respective stackeholders.
+------------------------------------------------------------------------------------------------------------------
+CARELON:
+
+tell me about yourslef
+day to day activities
+what are workspace--------->it is a feature that allows you to manage multiple versions of the same infrastructure configuration. it has state file for diff env. terraform workspace list            # Lists all workspaces
+terraform workspace new dev         # Creates a new workspace called "dev"
+terraform workspace select dev      # Switches to the "dev" workspace
+terraform workspace show            # Shows the current workspace
+terraform using enterprise or standard version
+do you maintain versions in terraform------------>azure repos
+do you develop modules in terraform
+what is statefile and why it is important------->The current state of all managed resources , Metadata about the resources. Without the state, Terraform would have to query every resource from the provider (e.g., AWS, Azure) on each run, which is slow and inefficient.
+what if statefile is deleted and how do you recover it if you are using open source-------->cp terraform.tfstate.backup terraform.tfstate, use terraform import, take the previous version from azure blob
+how do you execute terraform on some particular modules--------->terraform plan -target=module.b, terraform apply -target=module.b
+how do you store secrets and retreive it
+diff between application gateway and load balancer
+on which layer both of the things------->LB 4, Application gateway 7
+diff types of deployment strategies---------->blue-green, canary, rollback
+canary------------>give updates to set of people to check if updates are working fine
+rollback------------->revert to the previous version in case of issues or errors
+explain the ci/cd pipeline
+where do you deploy your code----------->webapp
+what is blob storage in azure------------>Azure Blob Storage is a highly scalable, durable, and cost-effective object storage service provided by Microsoft Azure(Binary Large Object). It is designed to store unstructured data such as:Images and videos,Documents (PDF, DOCX, etc.),Backups and logs,Big data files (CSV, JSON)
+which serverless things you used in azure---------->functionapp
+which fucntion triggers you have created------------>HTTP Trigger	Runs when an HTTP request is received (REST APIs, webhooks).
+Timer Trigger	Runs on a schedule (like a CRON job).
+Blob Trigger	Runs when a blob is added or modified in Azure Storage.
+Queue Trigger	Runs when a new message is added to an Azure Storage Queue.
+why we need docker
+help me how to write a docker file to install tomcat server--------->
+# Use the official Tomcat base image (includes Java)
+FROM tomcat:9.0-jdk17
+# Optional: Remove default web apps (like docs, examples, etc.)
+RUN rm -rf /usr/local/tomcat/webapps/*
+# Optional: Copy your WAR file to the webapps directory
+# COPY myapp.war /usr/local/tomcat/webapps/
+# Expose the default Tomcat port
+EXPOSE 8080
+how you expose port in docker--------->docker run -d -p <host_port>:<container_port> image_name
+what is high availability. and how do you do that----------->
+Strategy	                      Description
+Redundancy	                    Duplicate systems/components (e.g., multiple VMs, servers, regions).
+Load Balancing	                Distrib ute traffic across multiple instances to avoid overload.
+Health Monitoring	              Detect and route around unhealthy instances.
+Auto-Scaling	                  Automatically add/remove resources based on demand.
+Failover	                      Automatically switch to backup systems when one fails.
+Multiple Availability Zones	    Deploy across zones or regions to survive datacenter outages.
+do you work on disaster recover---------->Infrastructure (cloud/on-premise/hybrid)
+Applications (e.g., web apps, APIs, databases)
+Data (backup strategies, RTO/RPO planning)
+Cloud platforms (e.g., Azure Site Recovery, AWS Backup, GCP DR)------->Azure Site Recovery (ASR): Replicates VMs, physical servers, or other workloads to a secondary region.Azure Backup: For VM snapshots, SQL databases, file shares, etc.Zone-redundant services: Azure SQL, Storage, Kubernetes (AKS) support built-in redundancy.Geo-redundant storage (GRS): Automatically replicates to a paired region.Availability Zones & Sets: For high availability within a region.
+Business continuity (failover/failback, high availability, geo-redundancy)
+what is docker image------------->A Docker image is a read-only template that contains everything needed to run a Docker container, it has app code, dependencies, libraries, config file, os
+what is docker container---------->A Docker container is a lightweight, standalone, and executable package that includes everything needed to run a piece of software. It contains the application code, libraries, dependencies, and runtime, which allows it to run consistently across different computing environments
+i cant access vm. im getting timeout exception. what is the reason for that--------->enable ssh
+what is security group---------->It acts as a set of rules that define which inbound and outbound traffic is allowed to or from an instance
+on which port ssh run?-------->22. but we can also change the port number
+commands that are there in linux
+how are you managing access to multiple subscription----------->1. Azure Active Directory (Azure AD)
+Azure AD Tenant, User & Group Management, Service Principals
+2. Role-Based Access Control (RBAC)-->Scope, roles
+have you written automation scripts
+how often you create ci/cd pipelines
+what if build pipeline is broke
+how to check if particular port is listening or not----------->netstat, curl,telnet
+--------------------------------------------------------------------------------------------
+UHG:
+when do we use load balancer. is it required? can we replace it with application gateway----------->LB (layer 4): You are distributing non-HTTP/S traffic, such as TCP/UDP, vm,vmss and containers, cost is low compared to other. app gateway is You are dealing with HTTP/HTTPS traffic (Layer 7), Web Application Firewall
+how to restrict ip for a vm. if we have 100vm then how to do it--------->Place VMs in a subnet and apply NSG at the subnet level or If you need different rules for groups of VMs, define ASGs and use them in NSG rules. also instaed of givinf seperate ip adddress give range of ip's. we can also use azure firewall
+have you worked on multi stage build
+how to optimize the docker image
+how to maintain security in docker
+where do you store docker images---------->ACR
+diff between docker run and docker start------------>Creates and starts a brand-new container from an image. docker start, Starts an existing, stopped container
+how do you debug the code. build fails
+what are some aws services
+what is git rebase
+branching strategies
+how to solve git conflict
+i manulay made changes in cloud. then how it will reflect in terraform
+and how do you do vice version
+how do you store secrets in terraform
+why we use git cherrypick
+-----------------------------------------------------------------------------------
+AGGNE:
+how do you resolve merge conflcits. if 100 persons made changes in same file then will you sit with 100 persons
+explain how git cherrypick works. will it take upto that commitid or only that commitid--------------->git cherry-pick takes exactly one commit (the one you specify) and applies it to your current branch — not up to that commit, only that one
+explain access policies in kv---------->An Access Policy is a rule that specifies: Who (a user, app, or service principal), Has access to what (secrets, keys, or certificates), And what permissions (e.g., get, list, set, delete)
+im owner of sub will i get all the keys that are there in kv-------------->Owner role at subscription/resource group level can grant you access to the Key Vault, but does not itself grant access to secrets/keys inside the Key Vault. You must have a role like: Key Vault Secrets User to read secrets, Key Vault Reader (read vault metadata), Key Vault Administrator (full access)
+what are the things we can achieve in azure active directory--------------> Register and manage enterprise applications and custom apps. Assign built-in or custom roles to users/groups to limit access. Manage and register devices. Self-service password reset. Self-service group management. Integration with Log Analytics, RBAC
+diff between azure AD and windows service based directory--------->wad is for on premises access management. aad is for cloud access control, wad manages on premise device. aad manages cloud apps 
+things that are there to create azure service connection--------->msi, service pricipal, azure resource manager, app id, tenant id, sub id, name of connection, 
+Requirement	                        Description
+Azure subscription	                Where resources will be deployed
+Role in Azure	                      Owner or User Access Admin
+Auth method	                        Auto SPN (recommended) or manual SPN
+SPN info (manual only)	            Tenant ID, App ID, Secret
+DevOps permission	                  Project Admin or allowed to manage service connections
+RBAC permissions	                  Assign correct Azure roles to the SPN
+Scope & name	                      Decide scope (sub/resource group) and clear naming
+diff between system msi and user msi
+give example for both msi----------->A single Azure VM accessing Key Vault. this is for system assigned identity
+can we call other yaml file from pipeline---------> - template: templates/build-steps.yml
+stages of your pipeline
+how to use buildnumber as a variable in azure---------->Build.BuildNumber.   
+steps:
+    - script: echo "Build Number is $(myBuildNumber)"
+--------------------------------------------------------------------------------
+Albertsons:
+
+explain how you use docker artifcat and deploy it in webapp in ci/cd----------->store image in acr and download that image 
+          - task: AzureWebAppContainer@1
+            displayName: 'Deploy to Web App'
+            inputs:
+              azureSubscription: '<Your Service Connection Name>'
+              appName: '<Your Web App Name>'
+              containers: |
+                $(containerRegistry)/$(imageName):$(Build.BuildId)
+tools in ci/cd you are using
+what is rg in azure
+i want to use secrets in webapp
+there is an app which is running outside. that app should get access to blob account and modify the data----------->The app must be registered in Azure AD.
+Assign a role like Storage Blob Data Contributor to the app's service principal.
+App must authenticate using client credentials flow (Client ID + Secret/Certificate).
+can we achieve this using service principal------------->yes
+how does the request goes to .net. how does the routing happen for any app
+--------------------------------------------------------------------------------------------------------
+ Parentpay:
+
+ write a powershell script where we send a email if the cpu usage is below 10
+ how to make a module resuable accros systems n powershell---------->use modules. Import-Module MyModule Get-Command -Module MyModule
+ adding multiple windows server in ansible to active directory domain. how to do it---------->add windows server in inventory file. use this inventory file in playbook. run the playbook
+ how do we use active directory to optimize the login issues or authentication------->single sign on. sign in once and use all the other resources. by this loging to password is removed. use mfa so that password less is done. use mfa for security
+ how to automate sql backup and restore and main data integrity---------->use checksum and dbcc checkdb to maintain integrity when taking backups
+ write terraform script to deploy vm--------->rg, vnet,subnet,nic,nsg,storage,location, vm name, size, os
+ how do you do sql patches
+ how to you prioratize your task--------------> Prioritizing tasks effectively typically involves balancing urgency, importance, impact, and dependencies
+ |                   | **Urgent**           | **Not Urgent**            |
+| ----------------- | -------------------- | ------------------------- |
+| **Important**     | Do immediately       | Schedule time to do       |
+| **Not Important** | Delegate if possible | Eliminate or deprioritize |
+
+ do you document everything
+ did you automate any repeated task--------->yes added access policies and rbac roles to access the kv, keys, secrets and certs
+ do you have any idea on kql------------>kusto query lang. used to check the azure monitor logs, log analytics, app insights
+ any idea on iaas
+ automate iaas how do you do that
+ backup and restore things in azure cloud native tools------------>Azure Backup, SQL Database Backup and Restore, Azure Blob Storage Backup, Azure Site Recovery
+------------------------------------------------------------------------------------------------------------------
+Carelon L2:
+
+where are you hosting your applications---------------->on webapp hosted on vm
+tell me pipeline which you have build and how you are deploying your code to vm
+are you familiar with k8
+what is diff between terraform plan and init-------------->Initializes a Terraform working directory, installs plugins, Sets up the backend. plan: Shows what changes Terraform would make, Compares current state with desired config in .tf files, Does not make any actual changes
+how do you modify the statefile-------------->Modifying a Terraform state file is generally not recommended because it can lead to inconsistencies and potentially break the infrastructure if not done carefully. terraform state rm to remove resource, terraform state mv to move resource, terraform state push/pull 
+i have a vm. in my next plan we have to stop destroying the vm. how to do that----------->prevent_destroy = true in lifecycle block
+how do you execute the terraform modules
+in your pipeline have to incorporated any security stages--------->yes we use microsoftsecuritydevops task for scanning, checking secrets exposed, dependecny scan and container scan 
+what is the ci cd tool you are using to build your cicd pipeline
+tell me about the deployment startegies you use in your project---------->blue-green 
+how many environments do you have----->dev, staging, prod
+do you have dr region as well--------->yes, we use asr to replicate vms and also use secondary regions for app service
+what kind of issues you faced while deploying ci cd pipelines
+have you worked on sonarqueb 
+how do you run the test in ci cd pipeline-------------->we have test task in pipeline
+----------------------------------------------------------------------------------------------------
+smartek21 L2:
+
+i have 4env and all these env should be triggered from only 1pipeline----------->give diff stages and their service connections
+i want to deploy on dev using only 1branch. whats the condition you use for the dev stage to trigger the code only from 1branch----------->condition:eq(variables["build.sourcebarnchname"]. keshavi)
+have you integrated your code with sonarcube
+you are advised to provision the db and that dv should be accesed by internal people only and app should be accessed by other users. how to do that--------->use NSG. if you want adavnced features then use ASG
+my app is in other vnet and db is on other vnet. how do you make a connection between them------------>vnet Peering
+i dont want my secerts and cert to be exposed in pipelne. how to do it
+did u create group rbac policies in microsoft entra id
+i have a project dependency on other company how do you link both the projects in aad---------->invite external user from entra id and give respective roles and access.(B2B)
+how do you handle tickets
+how to do track the build failure
+how do you segregate if the issue is from develpment team or operation teams--------->API,functionality, configuration, response time, app code issues means dev 
+you are doing prod deployment it got 60% completed and got failed how do you handle this situation
+i dont want all persons to access my repos or file. how do you secure your repo-------------->we can add branch policies, or in repo settings we can restrict others to access(read,write). even the org settings we can give access to specific users
